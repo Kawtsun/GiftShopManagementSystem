@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Inter";
+    text-align: center;
+    font-size: 20px;
+    background-color: #ffedd0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    background-color: #795757;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+}
+
+.navbar ul li {
+    margin-right: 40px;
+}
+
+.navlinks a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar .buttons a {
+    margin-left: 20px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 8px;
+    text-decoration: none;
+    padding: 12px 40px;
+}
+
+.navbar .logo img {
+    width: 150px;
+    height: auto;
+}
+.buttons .signup {
+    background-color: #3b3030;
+}
