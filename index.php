@@ -26,7 +26,7 @@
                 </nav>
                 <div class="buttons">
                     <a href="index.php" class="login">Log In</a>
-                    <a href="index.php" class="signup">Sign Up</a>
+                    <a href="pages/register.php" class="signup">Sign Up</a>
                 </div>
             </div>
         </div>
