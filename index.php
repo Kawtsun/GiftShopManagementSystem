@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,9 +29,17 @@
                         <li><a href="index.php">Cart</a></li>
                     </ul>
                 </nav>
+                <p><?php if (isset($_SESSION['user'])) {
+                    echo "Welcome, " . $_SESSION['user'];
+                }
+                 ?></p>
                 <div class="buttons">
-                    <a href="index.php" class="login">Log In</a>
+                    <?php if (isset($_SESSION['user'])): ?>
+                    <a href="validate/logout-validate.php" class="signup">Logout</a>
+                    <?php else: ?>
+                    <a href="pages/login.php" class="login">Log In</a>
                     <a href="pages/register.php" class="signup">Sign Up</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -16,6 +16,7 @@ if (isset($_POST['login'])) {
 
     if ($email) {
         if (password_verify($pass, $email["password"])) {
+            $_SESSION['user'] = $email["username"];
             header("Location: ../index.php");
             exit();
         } else {
