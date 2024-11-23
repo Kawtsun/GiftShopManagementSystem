@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+include 'validate/db.php';
+
+$sql = "SELECT * FROM products";
+$all_products = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -44,5 +48,30 @@ session_start();
             </div>
         </div>
     </header>
+    <main>
+        <h2>Featured Products</h2>
+        <p>Explore our range of gifts!</p>
+        <div class="product_container">
+            <?php
+            while($row = mysqli_fetch_assoc($all_products)) {
+                echo '
+                <div class="card">
+                    <div class="image">
+                        <img src="' . $row["product_image"] . '" alt="">
+                    </div>
+                    <div class="caption">
+                        <p class="product_name">' . $row["product_name"] . '</p>
+                        <p class="product_price">Price: ₱' . $row["product_price"] . '</p>
+                    </div>
+                    <div class="card_buttons">
+                        <input type="number" name="quantity" min="0" value="0" required>
+                        <button type="submit">Add to Cart</button>
+                    </div>
+                </div>
+                ';
+            }
+            ?>
+        </div>
+    </main>
 </body>
 </html>
