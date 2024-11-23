@@ -94,7 +94,7 @@ body {
     margin: 30px auto -5px;
     color: white;
     background-color: #3b3030;
-    border: 1px solid white;
+    border: 1px solid transparent;
     border-radius: 8px;
     padding: 12px 40px;
     font-weight: bold;
@@ -132,15 +132,22 @@ header p {
     margin-left: 20px;
 }
 
+
+.intro h2 {
+    margin-bottom: 15px;
+}
+
+main {
+    margin: 30px auto;
+    width: 1200px;
+}
+
 .product_container {
     display: flex;
     flex-wrap: wrap;
     justify-content:flex-start;
     gap: 3rem;
     padding: 30px;
-    margin: 30px auto;
-    border: 1px solid;
-    width: 1200px;
 }
 
 .card img {
@@ -150,13 +157,65 @@ header p {
 .card {
     border-radius: 8px;
     background-color: white;
-    padding: 15px;
+    padding: 30px;
     margin: auto;
     width: calc(33.333% - 3rem);
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .card_buttons {
+    text-align: left;
     margin: 15px 0;
 }
 
+.caption {
+    text-align: left;
+}
+
+.caption p {
+    margin: 15px 0;
+}
+
+.caption .product_price {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.card_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.quantity_wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.card_buttons label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.card_buttons input[type=number] {
+    border-radius: 4px;
+    border: 1px solid;
+    width: 60px;
+    padding: 8px;
+}
+
+.card_buttons button {
+    color: white;
+    background-color: #3b3030;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 12px 40px;
+    font-weight: bold;
+}
+
+
+.cart_items img {
+    width: 200px;
+}

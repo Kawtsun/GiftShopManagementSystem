@@ -3,6 +3,7 @@ session_start();
 
 include 'validate/db.php';
 
+
 $sql = "SELECT * FROM products";
 $all_products = $conn->query($sql);
 ?>
@@ -15,7 +16,7 @@ $all_products = $conn->query($sql);
     <title>Likhang Kultura - Welcome to our gift store!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,7 +31,7 @@ $all_products = $conn->query($sql);
                         <li><a href="index.php">Home</a></li>
                         <li><a href="index.php">Catalog</a></li>
                         <li><a href="index.php">About</a></li>
-                        <li><a href="index.php">Cart</a></li>
+                        <li><a href="pages/cart.php">Cart</a></li>
                     </ul>
                 </nav>
                 <p><?php if (isset($_SESSION['user'])) {
@@ -49,11 +50,20 @@ $all_products = $conn->query($sql);
         </div>
     </header>
     <main>
-        <h2>Featured Products</h2>
-        <p>Explore our range of gifts!</p>
+        <?php
+            if (isset($_SESSION['success_message'])) {
+                echo "<div class='alert success'>{$_SESSION['success_message']}</div>";
+                unset($_SESSION['success_message']);
+            }
+        ?>
+        <div class="intro">
+            <h2>Featured Products</h2>
+            <p>Explore our range of gifts!</p>
+        </div>
+        
         <div class="product_container">
             <?php
-            while($row = mysqli_fetch_assoc($all_products)) {
+            while ($row = mysqli_fetch_assoc($all_products)) {
                 echo '
                 <div class="card">
                     <div class="image">
@@ -61,12 +71,18 @@ $all_products = $conn->query($sql);
                     </div>
                     <div class="caption">
                         <p class="product_name">' . $row["product_name"] . '</p>
-                        <p class="product_price">Price: ₱' . $row["product_price"] . '</p>
+                        <p class="product_price">₱' . $row["product_price"] . '</p>
                     </div>
-                    <div class="card_buttons">
-                        <input type="number" name="quantity" min="0" value="0" required>
-                        <button type="submit">Add to Cart</button>
-                    </div>
+                    <form action="validate/addtocart-validate.php" method="POST">
+                        <input type="hidden" name="product_code" value="' . $row["product_code"] . '">
+                        <div class="card_buttons">
+                            <div class="quantity_wrapper"> 
+                                <label for="quantity-' . $row["product_code"] . '">Qty:</label>
+                                <input type="number" id="quantity-' . $row["product_code"] . '" name="quantity" min="0" value="0" required>
+                            </div>
+                            <button type="submit" name="add_to_cart">Add to Cart</button>
+                        </div>
+                    </form>
                 </div>
                 ';
             }
