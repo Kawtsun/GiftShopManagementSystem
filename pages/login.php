@@ -33,16 +33,20 @@
             <h1>Log in now</h1>
         </div>
 
-        <form action="../validate/register-validate.php" method="POST">
+        <?php
+            include '../validate/alert-login.php';
+        ?>
+
+        <form action="../validate/login-validate.php" method="POST">
             <div class="form_data">
                 <input type="email" name="email" placeholder="Email">
                 <input type="password" name="password" placeholder="Password">
-                <input type="submit" value="Log In" name="submit">
+                <input type="submit" value="Log In" name="login">
             </div>
         </form>
         <div class="message">
             <p>
-                Already Registered? <a href="register.php">Sign up Here</a>
+                Don't have an account? <a href="register.php">Sign up Here</a>
             </p>
         </div>
     </div>

@@ -55,7 +55,7 @@ session_start();
         </form>
         <div class="message">
             <p>
-                Already Registered? <a href="login.php">Login Here</a>
+                Already have an account? <a href="login.php">Login Here</a>
             </p>
         </div>
     </div>
