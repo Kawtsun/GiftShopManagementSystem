@@ -207,15 +207,30 @@ main {
 }
 
 .card_buttons button {
-    color: white;
-    background-color: #3b3030;
-    border: 1px solid transparent;
     border-radius: 8px;
     padding: 12px 40px;
     font-weight: bold;
 }
 
 
+.card_buttons .add, .update {
+    color: white;
+    background-color: #3b3030;
+    border: 1px solid transparent;
+}
+
+.card .remove {
+    margin-left: auto;
+    border-radius: 8px;
+    padding: 12px 40px;
+    border: 1px solid transparent;
+    font-weight: bold;
+    background-color: rgb(205, 67, 67); 
+    color: white; 
+    margin-top: 10px;
+}
+
 .cart_items img {
     width: 200px;
 }
+

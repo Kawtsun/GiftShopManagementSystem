@@ -80,7 +80,7 @@ $all_products = $conn->query($sql);
                                 <label for="quantity-' . $row["product_code"] . '">Qty:</label>
                                 <input type="number" id="quantity-' . $row["product_code"] . '" name="quantity" min="0" value="0" required>
                             </div>
-                            <button type="submit" name="add_to_cart">Add to Cart</button>
+                            <button type="submit" class="add" name="add_to_cart">Add to Cart</button>
                         </div>
                     </form>
                 </div>
