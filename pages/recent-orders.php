@@ -63,7 +63,7 @@ foreach ($orders as $order) {
         <!-- Include your site's header here -->
     </header>
     <main>
-        <div class="intro">
+        <div class="intro2">
             <h2>Recent Orders</h2>
             <p>Here are your recent orders.</p>
         </div>

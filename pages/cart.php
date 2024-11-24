@@ -78,7 +78,7 @@ $cart_is_empty = true; // Flag to check if cart is empty
             }
         ?>
         <div class="profile_buttons"> <a href="recent-orders.php" class="btn">View Recent Orders</a> </div>
-        <div class="intro">
+        <div class="intro2">
             <h2>Your Cart</h2>
             <p>These are the items you've added to your cart.</p>
         </div>

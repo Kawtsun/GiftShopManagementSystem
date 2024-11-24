@@ -35,7 +35,7 @@ session_start();
         
     </header>
     <div class="form_container">
-        <div class="intro">
+        <div class="intro_register">
             <h1>Sign up now</h1>
         </div>
 

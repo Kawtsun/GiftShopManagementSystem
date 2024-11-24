@@ -16,8 +16,11 @@ $all_products = $conn->query($sql);
     <title>Likhang Kultura - Welcome to our gift store!</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik+Glitch&family=Sriracha&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script> 
+        document.addEventListener("DOMContentLoaded", function() { const successMessage = document.getElementById("success-message"); if (successMessage) { setTimeout(() => { successMessage.style.display = "none"; }, 3000); } }); 
+    </script>
 </head>
 <body>
     <header>
@@ -50,17 +53,13 @@ $all_products = $conn->query($sql);
         </div>
     </header>
     <main>
-        <?php
-            if (isset($_SESSION['success_message'])) {
-                echo "<div class='alert success'>{$_SESSION['success_message']}</div>";
-                unset($_SESSION['success_message']);
-            }
-        ?>
         <div class="intro">
-            <h2>Featured Products</h2>
+            <h1>Featured Products</h1>
             <p>Explore our range of gifts!</p>
         </div>
-        
+        <?php 
+            if (isset($_SESSION['success_message'])) { echo "<div id='success-message' class='alert success'>{$_SESSION['success_message']}</div>"; unset($_SESSION['success_message']); } 
+        ?>
         <div class="product_container">
             <?php
             while ($row = mysqli_fetch_assoc($all_products)) {

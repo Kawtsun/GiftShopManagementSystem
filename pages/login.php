@@ -29,7 +29,7 @@
         
     </header>
     <div class="form_container">
-        <div class="intro">
+        <div class="intro_login">
             <h1>Log in now</h1>
         </div>
 
