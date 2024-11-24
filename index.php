@@ -74,7 +74,7 @@ $all_products = $conn->query($sql);
                         <p class="product_price">₱' . $row["product_price"] . '</p>
                     </div>
                     <form action="validate/addtocart-validate.php" method="POST">
-                        <input type="hidden" name="product_code" value="' . $row["product_code"] . '">
+                        <input type="hidden" name="main_product_id" value="' . $row["main_product_id"] . '">
                         <div class="card_buttons">
                             <div class="quantity_wrapper"> 
                                 <label for="quantity-' . $row["product_code"] . '">Qty:</label>

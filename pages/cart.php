@@ -12,9 +12,9 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 $sql = "
-    SELECT p.product_code, p.product_name, p.product_price, p.product_image, c.quantity 
+    SELECT mp.product_id, mp.product_code, mp.product_name, mp.product_price, mp.product_image, c.quantity 
     FROM cart c
-    JOIN products p ON c.product_code = p.product_code
+    JOIN main_products mp ON c.main_product_id = mp.product_id
     WHERE c.user_id = ?
 ";
 $stmt = mysqli_prepare($conn, $sql);
@@ -87,15 +87,15 @@ $result = mysqli_stmt_get_result($stmt);
                             <p class="product_price">₱<?php echo $row['product_price']; ?></p>
                         </div>
                         <form action="../validate/updatecart-validate.php" method="POST">
-                            <input type="hidden" name="product_code" value="<?php echo $row['product_code']; ?>">
+                            <input type="hidden" name="main_product_id" value="<?php echo $row['product_id']; ?>">
                             <div class="card_buttons">
                                 <div class="quantity_wrapper">
                                     <label for="quantity-<?php echo $row['product_code']; ?>">Qty:</label>
                                     <input type="number" id="quantity-<?php echo $row['product_code']; ?>" name="quantity" min="1" value="<?php echo $row['quantity']; ?>" required>
                                 </div>
                                 <button type="submit" class="update" name="update_cart">Update</button>
+                                <button type="submit" class="remove" name="remove_item">Remove</button>
                             </div>
-                            <button type="submit" class="remove" name="remove_item">Remove</button>
                         </form>
                     </div>
                 <?php endwhile; ?>

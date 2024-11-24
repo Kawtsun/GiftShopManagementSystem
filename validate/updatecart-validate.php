@@ -6,13 +6,13 @@ include 'db.php';
 if (isset($_POST['update_cart'])) {
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
-        $product_code = $_POST['product_code'];
+        $main_product_id = $_POST['main_product_id'];
         $quantity = $_POST['quantity'];
 
         // Update the quantity for the product in the cart
-        $sql = "UPDATE cart SET quantity = ? WHERE user_id = ? AND product_code = ?";
+        $sql = "UPDATE cart SET quantity = ? WHERE user_id = ? AND main_product_id = ?";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "iis", $quantity, $user_id, $product_code);
+        mysqli_stmt_bind_param($stmt, "iii", $quantity, $user_id, $main_product_id);
         mysqli_stmt_execute($stmt);
 
         mysqli_stmt_close($stmt);
@@ -27,12 +27,12 @@ if (isset($_POST['update_cart'])) {
 } elseif (isset($_POST['remove_item'])) {
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
-        $product_code = $_POST['product_code'];
+        $main_product_id = $_POST['main_product_id'];
 
         // Remove the item from the cart
-        $sql = "DELETE FROM cart WHERE user_id = ? AND product_code = ?";
+        $sql = "DELETE FROM cart WHERE user_id = ? AND main_product_id = ?";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "is", $user_id, $product_code);
+        mysqli_stmt_bind_param($stmt, "ii", $user_id, $main_product_id);
         mysqli_stmt_execute($stmt);
 
         mysqli_stmt_close($stmt);
