@@ -21,7 +21,13 @@ $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
+
+// Initialize total price 
+$total_price = 0;
+$cart_is_empty = true; // Flag to check if cart is empty
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,14 +83,20 @@ $result = mysqli_stmt_get_result($stmt);
         </div>
         <div class="product_container">
             <?php if (mysqli_num_rows($result) > 0): ?>
-                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                <?php $cart_is_empty = false; // Cart is not emptyz
+                    while ($row = mysqli_fetch_assoc($result)): ?>
+                    <?php $subtotal = $row['product_price'] * $row['quantity']; $total_price += $subtotal; ?>
                     <div class="card">
                         <div class="image">
                             <img src="../<?php echo $row['product_image']; ?>" alt="<?php echo $row['product_name']; ?>">
                         </div>
                         <div class="caption">
                             <p class="product_name"><?php echo $row['product_name']; ?></p>
-                            <p class="product_price">₱<?php echo $row['product_price']; ?></p>
+                            <div class="price_subtotal">
+                                <p class="product_price">₱<?php echo $row['product_price']; ?></p>
+                                <p class="product_subtotal">Subtotal: ₱<?php echo number_format($subtotal, 2); ?></p>
+                            </div>
+     
                         </div>
                         <form action="../validate/updatecart-validate.php" method="POST">
                             <input type="hidden" name="main_product_id" value="<?php echo $row['product_id']; ?>">
@@ -103,6 +115,11 @@ $result = mysqli_stmt_get_result($stmt);
                 <p>Your cart is empty.</p>
             <?php endif; ?>
         </div>
+        <?php if (!$cart_is_empty): ?>
+        <div class="total_price"> 
+            <h3>Total Price: ₱<?php echo number_format($total_price, 2); ?></h3> 
+        </div>
+        <?php endif; ?>
     </main>
     <footer>
         <!-- Include your site's footer here -->

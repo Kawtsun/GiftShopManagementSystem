@@ -114,18 +114,17 @@ body {
 
 /* Style for success messages */
 .alert.success {
-    background-color: #d4edda;
-    color: #155724;
+    background-color: #155724;   
+    color: #d4edda;
     border: 1px solid #c3e6cb;
 }
 
 /* Style for error messages */
 .alert.error {
-    background-color: #686363;
-    color: #721c24;
+    background-color: #c0656e;
+    color: white;
     border: 1px solid #f5c6cb;
 }
-
 header p {
     text-decoration:underline #ffedd0 4px;
     text-underline-offset: 8px;
@@ -170,16 +169,32 @@ main {
 
 .caption {
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
+
 
 .caption p {
     margin: 15px 0;
 }
 
-.caption .product_price {
+.caption .product_price, .product_subtotal {
     font-weight: bold;
     font-size: 16px;
 }
+
+.price_subtotal {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.product_subtotal {
+    border-radius: 8px;
+    border: 1px solid;
+    padding: 15px 10px;
+}
+
 
 .card_buttons {
     display: flex;
