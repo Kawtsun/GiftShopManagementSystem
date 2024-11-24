@@ -31,8 +31,11 @@ if (isset($_POST['add_to_cart'])) {
         }
 
         mysqli_stmt_close($stmt);
+
+        // Capture the referring URL and redirect back to it
+        $referrer = $_SERVER['HTTP_REFERER'];
         $_SESSION['success_message'] = "Product added to cart successfully!";
-        header("Location: ../index.php");
+        header("Location: " . $referrer);
         exit();
     } else {
         $_SESSION['error_message'] = "You need to log in to add items to your cart.";

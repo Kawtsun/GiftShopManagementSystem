@@ -142,11 +142,13 @@ main {
 }
 
 .product_container {
+    background-color: #664343;
+    border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
     justify-content:flex-start;
     gap: 3rem;
-    padding: 30px;
+    padding: 40px;
 }
 
 .card img {
@@ -193,6 +195,10 @@ main {
     border-radius: 8px;
     border: 1px solid;
     padding: 15px 10px;
+}
+
+.total_price {
+    text-align: left;
 }
 
 
