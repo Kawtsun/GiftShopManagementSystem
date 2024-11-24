@@ -1,10 +1,9 @@
 <?php
 session_start();
 
-include 'validate/db.php';
+include '../validate/db.php';
 
-
-$sql = "SELECT * FROM products";
+$sql = "SELECT * FROM main_products";
 $all_products = $conn->query($sql);
 ?>
 
@@ -13,25 +12,25 @@ $all_products = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Likhang Kultura - Welcome to our gift store!</title>
+    <title>Catalog - Likhang Kultura</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <header>
         <div class="navbar">
             <div class="logo">
-                <img src="images/logo.svg" alt="Likhang Kultura">
+                <img src="../images/logo.svg" alt="Likhang Kultura">
             </div>
             <div class="nav-center">
                 <nav class="navlinks">
                     <ul>
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="pages/catalog.php">Catalog</a></li>
-                        <li><a href="index.php">About</a></li>
-                        <li><a href="pages/cart.php">Cart</a></li>
+                        <li><a href="../index.php">Home</a></li>
+                        <li><a href="catalog.php">Catalog</a></li>
+                        <li><a href="about.php">About</a></li>
+                        <li><a href="cart.php">Cart</a></li>
                     </ul>
                 </nav>
                 <p><?php if (isset($_SESSION['user'])) {
@@ -57,8 +56,8 @@ $all_products = $conn->query($sql);
             }
         ?>
         <div class="intro">
-            <h2>Featured Products</h2>
-            <p>Explore our range of gifts!</p>
+            <h2>Catalog</h2>
+            <p>Explore our full range of gifts!</p>
         </div>
         
         <div class="product_container">
@@ -67,14 +66,14 @@ $all_products = $conn->query($sql);
                 echo '
                 <div class="card">
                     <div class="image">
-                        <img src="' . $row["product_image"] . '" alt="">
+                        <img src="../' . $row["product_image"] . '" alt="' . $row["product_name"] . '">
                     </div>
                     <div class="caption">
                         <p class="product_name">' . $row["product_name"] . '</p>
                         <p class="product_price">₱' . $row["product_price"] . '</p>
                     </div>
-                    <form action="validate/addtocart-validate.php" method="POST">
-                        <input type="hidden" name="main_product_id" value="' . $row["main_product_id"] . '">
+                    <form action="../validate/addtocart-validate.php" method="POST">
+                        <input type="hidden" name="main_product_id" value="' . $row["product_id"] . '">
                         <div class="card_buttons">
                             <div class="quantity_wrapper"> 
                                 <label for="quantity-' . $row["product_code"] . '">Qty:</label>
