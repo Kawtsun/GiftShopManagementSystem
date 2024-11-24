@@ -201,6 +201,10 @@ main {
     text-align: left;
 }
 
+.empty {
+    color: white;
+    font-weight: bold;
+}
 
 .card_buttons {
     display: flex;

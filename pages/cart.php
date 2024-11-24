@@ -77,6 +77,7 @@ $cart_is_empty = true; // Flag to check if cart is empty
                 unset($_SESSION['success_message']);
             }
         ?>
+        <div class="profile_buttons"> <a href="recent-orders.php" class="btn">View Recent Orders</a> </div>
         <div class="intro">
             <h2>Your Cart</h2>
             <p>These are the items you've added to your cart.</p>
@@ -112,7 +113,7 @@ $cart_is_empty = true; // Flag to check if cart is empty
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
-                <p>Your cart is empty.</p>
+                <p class="empty">Your cart is empty.</p>
             <?php endif; ?>
         </div>
         <?php if (!$cart_is_empty): ?>
@@ -121,6 +122,9 @@ $cart_is_empty = true; // Flag to check if cart is empty
         </div>
         <?php endif; ?>
     </main>
+    <div class="proceed_to_billing"> 
+        <a href="billing.php" class="btn">Proceed to Billing</a> 
+    </div>
     <footer>
         <!-- Include your site's footer here -->
     </footer>
