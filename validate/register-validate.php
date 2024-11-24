@@ -49,8 +49,8 @@ if (isset($_POST['submit'])) {
     if (!empty($pass)) {
         if (strlen($pass) < 8) {
             array_push($errors, "Password must be at least 8 characters long.");
-        } if ($pass !== $confirm_pass) {
-            array_push($errors, "Passwords do not match.");
+        } elseif ($pass !== $confirm_pass) {
+            array_push($errors, "Password do not match.");
         }
     }
 
@@ -64,9 +64,8 @@ if (isset($_POST['submit'])) {
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "ssss", $fullname, $email, $user, $password_hash);
         mysqli_stmt_execute($stmt);
- 
-        $_SESSION['success_message'] = "You are registered successfully";
-        header("Location: ../pages/register.php");
+
+        header("Location: ../pages/login.php");
         exit();
     }
 }
