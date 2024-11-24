@@ -44,8 +44,8 @@ $all_products = $conn->query($sql);
                     <?php if (isset($_SESSION['user'])): ?>
                     <a href="validate/logout-validate.php" class="signup">Logout</a>
                     <?php else: ?>
-                    <a href="pages/login.php" class="login">Log In</a>
-                    <a href="pages/register.php" class="signup">Sign Up</a>
+                    <a href="login.php" class="login">Log In</a>
+                    <a href="register.php" class="signup">Sign Up</a>
                     <?php endif; ?>
                 </div>
             </div>

@@ -50,7 +50,7 @@ $cart_is_empty = true; // Flag to check if cart is empty
                 <nav class="navlinks">
                     <ul>
                         <li><a href="../index.php">Home</a></li>
-                        <li><a href="index.php">Catalog</a></li>
+                        <li><a href="catalog.php">Catalog</a></li>
                         <li><a href="index.php">About</a></li>
                         <li><a href="cart.php">Cart</a></li>
                     </ul>
