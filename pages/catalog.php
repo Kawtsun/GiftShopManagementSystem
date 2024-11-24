@@ -17,9 +17,7 @@ $all_products = $conn->query($sql);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik+Glitch&family=Sriracha&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <script> 
-        document.addEventListener("DOMContentLoaded", function() { const successMessage = document.getElementById("success-message"); if (successMessage) { setTimeout(() => { successMessage.style.display = "none"; }, 3000); } }); 
-    </script>
+    <script src="../script.js"></script>
 </head>
 <body>
     <header>
