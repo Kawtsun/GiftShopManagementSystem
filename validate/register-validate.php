@@ -15,19 +15,16 @@ if (isset($_POST['submit'])) {
 
     $errors = array();
 
-    // Check for empty fields
     if (empty($fullname) || empty($email) || empty($user) || empty($pass) || empty($confirm_pass)) {
         array_push($errors, "All fields are required.");
     }
 
-    // Validate email format
     if (!empty($email)) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             array_push($errors, "Email is not valid.");
         }
     }
 
-    // Check if email already exists
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $email);
@@ -38,14 +35,12 @@ if (isset($_POST['submit'])) {
         array_push($errors, "Email already exists.");
     }
 
-    // If there are errors related to email, set the session message and exit early
     if (count($errors) > 0) {
         $_SESSION['message'] = $errors;
         header("Location: ../pages/register.php");
         exit();
     }
 
-    // Validate password only if email is unique
     if (!empty($pass)) {
         if (strlen($pass) < 8) {
             array_push($errors, "Password must be at least 8 characters long.");
@@ -54,7 +49,6 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    // Check for any remaining errors
     if (count($errors) > 0) {
         $_SESSION['message'] = $errors;
         header("Location: ../pages/register.php");

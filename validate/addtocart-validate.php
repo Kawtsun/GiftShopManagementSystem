@@ -9,7 +9,6 @@ if (isset($_POST['add_to_cart'])) {
         $main_product_id = $_POST['main_product_id'];
         $quantity = $_POST['quantity'];
 
-        // Check if the product is already in the cart
         $sql = "SELECT * FROM cart WHERE user_id = ? AND main_product_id = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "ii", $user_id, $main_product_id);
@@ -17,13 +16,11 @@ if (isset($_POST['add_to_cart'])) {
         $result = mysqli_stmt_get_result($stmt);
 
         if (mysqli_num_rows($result) > 0) {
-            // Update the quantity if the product is already in the cart
             $sql = "UPDATE cart SET quantity = quantity + ? WHERE user_id = ? AND main_product_id = ?";
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "iii", $quantity, $user_id, $main_product_id);
             mysqli_stmt_execute($stmt);
         } else {
-            // Insert a new row if the product is not in the cart
             $sql = "INSERT INTO cart (user_id, main_product_id, quantity) VALUES (?, ?, ?)";
             $stmt = mysqli_prepare($conn, $sql);
             mysqli_stmt_bind_param($stmt, "iii", $user_id, $main_product_id, $quantity);
@@ -32,7 +29,6 @@ if (isset($_POST['add_to_cart'])) {
 
         mysqli_stmt_close($stmt);
 
-        // Capture the referring URL and redirect back to it
         $referrer = $_SERVER['HTTP_REFERER'];
         $_SESSION['success_message'] = "Product added to cart successfully!";
         header("Location: " . $referrer);

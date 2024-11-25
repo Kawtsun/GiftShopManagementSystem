@@ -469,7 +469,7 @@ header p {
 }
 
 .summary_intro {
-    margin-bottom: 30px;
+    margin: 15px;
     border-radius: 8px;
     width: 100%;
     padding: 30px;

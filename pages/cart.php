@@ -129,7 +129,7 @@ $cart_is_empty = mysqli_num_rows($result) === 0;
                         <h3>Total Price: ₱<?php echo number_format($total_price, 2); ?></h3>
                     </div>
                     <div class="proceed_to_billing">
-                        <a href="billing.php" class="btn">Proceed to Billing</a>
+                        <a href="checkout.php" class="btn">Proceed to Checkout</a>
                     </div>
                 </div>
             <?php endif; ?>

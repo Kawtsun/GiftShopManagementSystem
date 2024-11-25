@@ -49,7 +49,7 @@ $all_products = $conn->query($sql);
     </header>
     <main>
         <div class="intro">
-            <h1>Catalog</h1>
+            <h1>Product Catalog</h1>
             <p>Explore our full range of gifts!</p>
         </div>
         <?php 

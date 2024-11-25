@@ -85,12 +85,12 @@ mysqli_stmt_close($stmt);
                 <a href="cart.php" class="btn">Go Back</a>
             </div>
             <div class="intro_message_right">
-                <h2>Billing Information</h2>
+                <h2>Checkout Information</h2>
                 <p>Please fill in your details to complete your purchase.</p>
             </div>
         </div>
         <div class="billing_container">
-            <form action="../validate/process-billing.php" method="POST">
+            <form action="../validate/process-checkout.php" method="POST">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['fullname']); ?>" required>
@@ -110,7 +110,7 @@ mysqli_stmt_close($stmt);
                         <option value="Credit Card">Credit Card</option>
                     </select>
                 </div>
-                <button type="submit" name="submit_billing">Proceed to Payment</button>
+                <button type="submit" name="submit_checkout">Proceed to Payment</button>
             </form>
         </div>
     </main>
