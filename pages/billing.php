@@ -33,9 +33,10 @@ mysqli_stmt_close($stmt);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <script src="../script.js"></script>
 </head>
 <body>
-<header>
+    <header>
         <div class="navbar">
             <div class="logo">
                 <img src="../images/logo.svg" alt="Likhang Kultura">
@@ -45,7 +46,7 @@ mysqli_stmt_close($stmt);
                     <ul>
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="catalog.php">Catalog</a></li>
-                        <li><a href="about.php">About</a></li>
+                        <li><a href="index.php">About</a></li>
                         <li><a href="cart.php">Cart</a></li>
                     </ul>
                 </nav>
@@ -55,10 +56,10 @@ mysqli_stmt_close($stmt);
                  ?></p>
                 <div class="buttons">
                     <?php if (isset($_SESSION['user'])): ?>
-                    <a href="validate/logout-validate.php" class="signup">Logout</a>
+                    <a href="../validate/logout-validate.php" class="signup">Logout</a>
                     <?php else: ?>
-                    <a href="pages/login.php" class="login">Log In</a>
-                    <a href="pages/register.php" class="signup">Sign Up</a>
+                    <a href="login.php" class="login">Log In</a>
+                    <a href="register.php" class="signup">Sign Up</a>
                     <?php endif; ?>
                 </div>
             </div>

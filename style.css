@@ -209,8 +209,7 @@ header p {
 }
 
 .empty {
-    color: white;
-    font-weight: bold;
+    color: black;
 }
 
 .card_buttons {
@@ -286,6 +285,10 @@ header p {
 .intro_message {
     text-align: left;
     flex: 1;
+}
+
+.intro_message h2 {
+    margin-bottom: 15px;
 }
 
 .cart_button {

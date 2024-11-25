@@ -116,7 +116,7 @@ $cart_is_empty = true; // Flag to check if cart is empty
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
-                <p class="empty">Your cart is empty.</p>
+                <p class="empty">Your cart is currently empty.</p>
             <?php endif; ?>
         </div>
         <?php if (!$cart_is_empty): ?>
