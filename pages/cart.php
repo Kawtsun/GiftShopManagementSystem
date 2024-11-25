@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 $sql = "
-    SELECT mp.product_id, mp.product_code, mp.product_name, mp.product_price, mp.product_image, c.quantity 
+    SELECT mp.product_id, mp.product_name, mp.product_price, mp.product_image, c.quantity 
     FROM cart c
     JOIN main_products mp ON c.main_product_id = mp.product_id
     WHERE c.user_id = ?
@@ -25,8 +25,6 @@ $result = mysqli_stmt_get_result($stmt);
 $total_price = 0;
 $cart_is_empty = mysqli_num_rows($result) === 0;
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -97,6 +95,7 @@ $cart_is_empty = mysqli_num_rows($result) === 0;
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Subtotal</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -114,10 +113,15 @@ $cart_is_empty = mysqli_num_rows($result) === 0;
                                         <input type="hidden" name="main_product_id" value="<?php echo $row['product_id']; ?>">
                                         <input type="number" name="quantity" min="1" value="<?php echo $row['quantity']; ?>" required>
                                         <button type="submit" name="update_cart" class="update">Update</button>
-                                        <button type="submit" name="remove_item" class="remove">Remove</button>
                                     </form>
                                 </td>
                                 <td class="subtotal">₱<?php echo number_format($subtotal, 2); ?></td>
+                                <td>
+                                    <form action="../validate/updatecart-validate.php" method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="main_product_id" value="<?php echo $row['product_id']; ?>">
+                                        <button type="submit" name="remove_item" class="remove">Remove</button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endwhile; ?>
                     </tbody>

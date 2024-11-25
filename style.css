@@ -148,7 +148,8 @@ header p {
 
 
 .product_container {
-    margin: 0px auto;
+    border: 3px solid #58585836;
+    margin: 30px auto;
     width: 1200px;
     border-radius: 8px;
     display: flex;
@@ -288,8 +289,8 @@ header p {
     margin-bottom: 20px;
     border-radius: 8px;
     overflow: hidden; 
-    background-color: #664343;
-    border: 1px solid #664343;
+    background-color: #58585836;
+    border: 1px solid #58585836;;
 }
 
 .cart_table input[type=number] {
@@ -301,7 +302,7 @@ header p {
 }
 
 .cart_table th, .cart_table td {
-    border: 1px solid #664343;
+    border: 2px solid #58585836;;
     padding: 8px;
 }
 
@@ -379,4 +380,12 @@ header p {
     margin: 20px 0;
     font-size: 18px;
     color: #333;
+}
+
+.total_billing {
+    width: 60%;
+    border: 1px solid #58585836;
+    background-color: white;
+    padding: 50px 0px;
+    border-radius: 8px;
 }
