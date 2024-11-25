@@ -26,7 +26,7 @@ if (isset($_POST['submit_billing'])) {
     mysqli_stmt_close($stmt);
 
     // Fetch cart items and complete product details
-    $sql = "SELECT c.main_product_id, c.quantity, mp.product_name, mp.product_price 
+    $sql = "SELECT c.main_product_id, c.quantity, mp.product_code, mp.product_name, mp.product_price 
             FROM cart c 
             JOIN main_products mp ON c.main_product_id = mp.product_id 
             WHERE c.user_id = ?";

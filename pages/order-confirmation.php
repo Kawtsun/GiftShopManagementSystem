@@ -20,41 +20,11 @@ unset($_SESSION['success_message']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Confirmation - Likhang Kultura</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <script src="../script.js"></script>
+    <link rel="stylesheet" href="../style.css"> <!-- Ensure path is correct -->
 </head>
 <body>
     <header>
-        <div class="navbar">
-            <div class="logo">
-                <img src="../images/logo.svg" alt="Likhang Kultura">
-            </div>
-            <div class="nav-center">
-                <nav class="navlinks">
-                    <ul>
-                        <li><a href="../index.php">Home</a></li>
-                        <li><a href="catalog.php">Catalog</a></li>
-                        <li><a href="index.php">About</a></li>
-                        <li><a href="cart.php">Cart</a></li>
-                    </ul>
-                </nav>
-                <p><?php if (isset($_SESSION['user'])) {
-                    echo "Welcome, " . $_SESSION['user'];
-                }
-                 ?></p>
-                <div class="buttons">
-                    <?php if (isset($_SESSION['user'])): ?>
-                    <a href="../validate/logout-validate.php" class="signup">Logout</a>
-                    <?php else: ?>
-                    <a href="login.php" class="login">Log In</a>
-                    <a href="register.php" class="signup">Sign Up</a>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
+        <!-- Include your site's header here -->
     </header>
     <main>
         <div class="intro">
@@ -70,6 +40,7 @@ unset($_SESSION['success_message']);
             <table>
                 <thead>
                     <tr>
+                        <th>Product Code</th>
                         <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
@@ -79,6 +50,7 @@ unset($_SESSION['success_message']);
                 <tbody>
                     <?php foreach ($order_summary['order_items'] as $item): ?>
                         <tr>
+                            <td><?php echo htmlspecialchars($item['product_code']); ?></td>
                             <td><?php echo htmlspecialchars($item['product_name']); ?></td>
                             <td><?php echo $item['quantity']; ?></td>
                             <td>₱<?php echo number_format($item['product_price'], 2); ?></td>

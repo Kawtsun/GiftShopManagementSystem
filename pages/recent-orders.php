@@ -28,7 +28,7 @@ $order_items = [];
 $order_totals = [];
 foreach ($orders as $order) {
     $order_id = $order['order_id'];
-    $sql = "SELECT mp.product_name, oi.quantity, mp.product_price 
+    $sql = "SELECT mp.product_code, mp.product_name, oi.quantity, mp.product_price 
             FROM order_items oi 
             JOIN main_products mp ON oi.main_product_id = mp.product_id 
             WHERE oi.order_id = ?";
@@ -56,44 +56,14 @@ foreach ($orders as $order) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recent Orders - Likhang Kultura</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
-    <script src="../script.js"></script>
+    <link rel="stylesheet" href="../style.css"> <!-- Ensure path is correct -->
 </head>
 <body>
     <header>
-        <div class="navbar">
-            <div class="logo">
-                <img src="../images/logo.svg" alt="Likhang Kultura">
-            </div>
-            <div class="nav-center">
-                <nav class="navlinks">
-                    <ul>
-                        <li><a href="../index.php">Home</a></li>
-                        <li><a href="catalog.php">Catalog</a></li>
-                        <li><a href="index.php">About</a></li>
-                        <li><a href="cart.php">Cart</a></li>
-                    </ul>
-                </nav>
-                <p><?php if (isset($_SESSION['user'])) {
-                    echo "Welcome, " . $_SESSION['user'];
-                }
-                 ?></p>
-                <div class="buttons">
-                    <?php if (isset($_SESSION['user'])): ?>
-                    <a href="../validate/logout-validate.php" class="signup">Logout</a>
-                    <?php else: ?>
-                    <a href="login.php" class="login">Log In</a>
-                    <a href="register.php" class="signup">Sign Up</a>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
+        <!-- Include your site's header here -->
     </header>
     <main>
-        <div class="intro2">
+        <div class="intro">
             <h2>Recent Orders</h2>
             <p>Here are your recent orders.</p>
         </div>
@@ -111,6 +81,7 @@ foreach ($orders as $order) {
                         <table>
                             <thead>
                                 <tr>
+                                    <th>Product Code</th>
                                     <th>Product Name</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
@@ -120,6 +91,7 @@ foreach ($orders as $order) {
                             <tbody>
                                 <?php foreach ($order_items[$order['order_id']] as $item): ?>
                                     <tr>
+                                        <td><?php echo htmlspecialchars($item['product_code']); ?></td>
                                         <td><?php echo htmlspecialchars($item['product_name']); ?></td>
                                         <td><?php echo $item['quantity']; ?></td>
                                         <td>₱<?php echo number_format($item['product_price'], 2); ?></td>
