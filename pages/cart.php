@@ -39,6 +39,7 @@ $cart_is_empty = true; // Flag to check if cart is empty
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <script src="../script.js"></script>
 </head>
 <body>
     <header>
@@ -71,11 +72,8 @@ $cart_is_empty = true; // Flag to check if cart is empty
         </div>
     </header>
     <main>
-        <?php
-            if (isset($_SESSION['success_message'])) {
-                echo "<div class='alert success'>{$_SESSION['success_message']}</div>";
-                unset($_SESSION['success_message']);
-            }
+        <?php 
+            if (isset($_SESSION['success_message'])) { echo "<div id='success-message' class='alert success'>{$_SESSION['success_message']}</div>"; unset($_SESSION['success_message']); } 
         ?>
         <div class="profile_buttons"> <a href="recent-orders.php" class="btn">View Recent Orders</a> </div>
         <div class="intro2">
