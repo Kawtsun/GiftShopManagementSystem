@@ -40,7 +40,7 @@ $all_products = $conn->query($sql);
                  ?></p>
                 <div class="buttons">
                     <?php if (isset($_SESSION['user'])): ?>
-                    <a href="validate/logout-validate.php" class="signup">Logout</a>
+                    <a href="../validate/logout-validate.php" class="signup">Logout</a>
                     <?php else: ?>
                     <a href="login.php" class="login">Log In</a>
                     <a href="register.php" class="signup">Sign Up</a>
