@@ -435,8 +435,7 @@ header p {
 }
 
 .empty_cart_message {
-    margin: 20px 0;
-    font-size: 18px;
+    margin: 0 auto;
     color: #212121cc;
 }
 
@@ -456,7 +455,7 @@ header p {
 }
 
 .intro3 h2 {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .billing_container {
@@ -493,6 +492,10 @@ header p {
     font-weight: bold;
 }
 
+.billing_container button:hover {
+    background-color: #282121;
+    transition: ease 300ms;
+}
 
 .order_summary {
     width: 1200px;
