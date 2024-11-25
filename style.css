@@ -250,27 +250,8 @@ header p {
     border: 1px solid transparent;
 }
 
-.card_buttons .update {
-    margin-left: auto;
-    color: white;
-    background-color: #3b3030;
-    border: 1px solid transparent;
-    padding: 12px 10px;
-}
 
-.card .remove {
-    margin-left: auto;
-    border-radius: 8px;
-    padding: 12px 10px;
-    border: 1px solid transparent;
-    font-weight: bold;
-    background-color: rgb(205, 67, 67); 
-    color: white; 
-}
 
-.cart_items img {
-    width: 200px;
-}
 
 .intro2 {
     display: flex;
@@ -291,10 +272,6 @@ header p {
     margin-bottom: 15px;
 }
 
-.cart_button {
-    margin-left: auto;
-}
-
 .btn{
     text-decoration: none;
     color: white;
@@ -305,27 +282,94 @@ header p {
     font-weight: bold;
 }
 
+.cart_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden; 
+    background-color: #664343;
+    border: 1px solid #664343;
+}
+
+.cart_table input[type=number] {
+    border-radius: 4px;
+    border: 1px solid;
+    width: 60px;
+    padding: 8px;
+}
+
+.cart_table th, .cart_table td {
+    border: 1px solid #664343;
+    padding: 8px;
+}
+
+.cart_table td {
+    background-color: white;
+}
+
+.cart_table th {
+    color: white;
+    background-color: #664343;
+}
+
+.cart_table img {
+    max-width: 100px;
+    height: auto;
+}
+
+.cart_table thead th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.cart_table thead th:last-child {
+    border-top-right-radius: 8px;
+}
+
+.cart_table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+.cart_table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+.cart_table button {
+    border-radius: 8px;
+    padding: 12px 10px;
+    border: 1px solid transparent;
+    font-weight: bold;
+    color: white;
+}
+
+.update {
+    background-color: #3b3030;
+}
+
+.remove {
+    background-color: rgb(205, 67, 67);
+}
+
 .total_billing {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 1200px;
     max-width: 100%;
-    margin: 30px auto;
+    margin: 0 auto;
     margin-bottom: 20px;
-    position: relative;
 }
 
 .total_price {
-    border-radius: 8px;
-    border: 1px solid;
-    padding: 15px 40px;
-    position: absolute;
-    right: 0;
+    margin-left: auto;
 }
 
 .proceed_to_billing {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0 auto;
+}
+
+.empty_cart_message {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #333;
 }

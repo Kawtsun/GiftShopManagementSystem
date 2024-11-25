@@ -22,9 +22,8 @@ mysqli_stmt_bind_param($stmt, "i", $user_id);
 mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
-// Initialize total price 
 $total_price = 0;
-$cart_is_empty = true; // Flag to check if cart is empty
+$cart_is_empty = mysqli_num_rows($result) === 0;
 ?>
 
 
@@ -80,55 +79,68 @@ $cart_is_empty = true; // Flag to check if cart is empty
                 <h2>Your Cart</h2>
                 <p>These are the items you've added to your cart.</p>
             </div>
-            <div class="cart_button"> 
-                <a href="recent-orders.php" class="btn">Recent Orders</a> 
+            <div class="cart_button">
+                <a href="recent-orders.php" class="btn">Recent Orders</a>
             </div>
         </div>
-        
         <div class="product_container">
-            <?php if (mysqli_num_rows($result) > 0): ?>
-                <?php $cart_is_empty = false; // Cart is not emptyz
-                    while ($row = mysqli_fetch_assoc($result)): ?>
-                    <?php $subtotal = $row['product_price'] * $row['quantity']; $total_price += $subtotal; ?>
-                    <div class="card">
-                        <div class="image">
-                            <img src="../<?php echo $row['product_image']; ?>" alt="<?php echo $row['product_name']; ?>">
-                        </div>
-                        <div class="caption">
-                            <p class="product_name"><?php echo $row['product_name']; ?></p>
-                            <div class="price_subtotal">
-                                <p class="product_price">₱<?php echo $row['product_price']; ?></p>
-                                <p class="product_subtotal">Subtotal: ₱<?php echo number_format($subtotal, 2); ?></p>
-                            </div>
-     
-                        </div>
-                        <form action="../validate/updatecart-validate.php" method="POST">
-                            <input type="hidden" name="main_product_id" value="<?php echo $row['product_id']; ?>">
-                            <div class="card_buttons">
-                                <div class="quantity_wrapper">
-                                    <label for="quantity-<?php echo $row['product_code']; ?>">Qty:</label>
-                                    <input type="number" id="quantity-<?php echo $row['product_code']; ?>" name="quantity" min="1" value="<?php echo $row['quantity']; ?>" required>
-                                </div>
-                                <button type="submit" class="update" name="update_cart">Update</button>
-                                <button type="submit" class="remove" name="remove_item">Remove</button>
-                            </div>
-                        </form>
-                    </div>
-                <?php endwhile; ?>
+            <?php if ($cart_is_empty): ?>
+                <div class="empty_cart_message">
+                    <p>Your cart is currently empty.</p>
+                </div>
             <?php else: ?>
-                <p class="empty">Your cart is currently empty.</p>
+                <table class="cart_table">
+                    <thead>
+                        <tr>
+                            <th>Product Image</th>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                            <?php
+                            $subtotal = $row['product_price'] * $row['quantity'];
+                            $total_price += $subtotal;
+                            ?>
+                            <tr>
+                                <td><img src="../<?php echo $row['product_image']; ?>" alt="<?php echo $row['product_name']; ?>"></td>
+                                <td><?php echo $row['product_name']; ?></td>
+                                <td>₱<?php echo number_format($row['product_price'], 2); ?></td>
+                                <td>
+                                    <form action="../validate/updatecart-validate.php" method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="main_product_id" value="<?php echo $row['product_id']; ?>">
+                                        <input type="number" name="quantity" min="1" value="<?php echo $row['quantity']; ?>" required>
+                                        <button type="submit" name="update_cart" class="update">Update</button>
+                                    </form>
+                                </td>
+                                <td>₱<?php echo number_format($subtotal, 2); ?></td>
+                                <td>
+                                    <form action="../validate/updatecart-validate.php" method="POST" style="display: inline-block;">
+                                        <input type="hidden" name="main_product_id" value="<?php echo $row['product_id']; ?>">
+                                        <button type="submit" name="remove_item" class="remove">Remove</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                    </tbody>
+                </table>
+                <div class="total_billing">
+                    <div class="total_price">
+                        <h3>Total Price: ₱<?php echo number_format($total_price, 2); ?></h3>
+                    </div>
+                    <div class="proceed_to_billing">
+                        <a href="billing.php" class="btn">Proceed to Billing</a>
+                    </div>
+                </div>
             <?php endif; ?>
         </div>
-        <?php if (!$cart_is_empty): ?>
-            <div class="total_billing">
-                <div class="proceed_to_billing">
-                    <a href="billing.php" class="btn">Proceed to Billing</a>
-                </div>
-                <div class="total_price">
-                    <h3>Total: ₱<?php echo number_format($total_price, 2); ?></h3>
-                </div>
-            </div>
-        <?php endif; ?>
+    </main>
+
+
 
 
 
