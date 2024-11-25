@@ -120,23 +120,29 @@ body {
 }
 
 .alert {
+    color: white; 
     font-weight: bold;
     padding: 15px;
     border-radius: 5px;
     margin: 15px 0;
     font-size: 14px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Style for success messages */
 .alert.success {
-    position: fixed; top: 10px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 300px; text-align: center; background-color: #4caf50; color: white; padding: 15px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: fixed; 
+    top: 10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 1000; 
+    width: 300px; 
+    text-align: center; 
+    background-color: #4caf50; 
+    
 }
 
-/* Style for error messages */
 .alert.error {
-    background-color: #c0656e;
-    color: white;
-    border: 1px solid #f5c6cb;
+    background-color: rgb(205, 67, 67);
 }
 header p {
     text-decoration:underline #ffedd0 4px;
@@ -251,9 +257,6 @@ header p {
     border: 1px solid transparent;
 }
 
-
-
-
 .intro2 {
     display: flex;
     justify-content: space-between;
@@ -264,14 +267,28 @@ header p {
     margin-bottom: 20px;
 }
 
-.intro_message {
-    text-align: left;
-    flex: 1;
+.intro2 h2 {
+    margin-bottom: 10px;
 }
 
-.intro_message h2 {
-    margin-bottom: 15px;
+.intro_message_left {
+    flex: 1;
+    text-align: left;
 }
+
+.intro_message_right {
+    flex: 1;
+    text-align: right;
+}
+
+.cart_button_left {
+    margin-right: auto;
+}
+
+.cart_button_right {
+    margin-left: auto;
+}
+
 
 .btn{
     text-decoration: none;
@@ -383,9 +400,56 @@ header p {
 }
 
 .total_billing {
-    width: 60%;
     border: 1px solid #58585836;
     background-color: white;
-    padding: 50px 0px;
+    padding: 50px 0;
     border-radius: 8px;
 }
+
+.intro3 {
+    text-align: left;
+    width: 1200px;
+    max-width: 100%;
+    margin: 30px auto;
+    margin-bottom: 20px;
+}
+
+.intro3 h2 {
+    margin-bottom: 15px;
+}
+
+.billing_container {
+    text-align: left;
+    font-size: 18px;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 40px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.billing_container label {
+    display: block;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.billing_container input, textarea, select, option {
+    font-size: 16px;
+    width: 100%;
+    padding: 8px;
+}
+
+.billing_container button {
+    display: block;
+    margin: 30px auto 0;
+    color: white;
+    background-color: #3b3030;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 12px 40px;
+    font-weight: bold;
+}
+
+

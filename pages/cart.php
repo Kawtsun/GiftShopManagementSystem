@@ -73,11 +73,11 @@ $cart_is_empty = mysqli_num_rows($result) === 0;
             if (isset($_SESSION['success_message'])) { echo "<div id='success-message' class='alert success'>{$_SESSION['success_message']}</div>"; unset($_SESSION['success_message']); } 
         ?>
         <div class="intro2">
-            <div class="intro_message">
+            <div class="intro_message_left">
                 <h2>Your Cart</h2>
                 <p>These are the items you've added to your cart.</p>
             </div>
-            <div class="cart_button">
+            <div class="cart_button_right">
                 <a href="recent-orders.php" class="btn">Recent Orders</a>
             </div>
         </div>

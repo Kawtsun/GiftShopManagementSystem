@@ -66,28 +66,39 @@ mysqli_stmt_close($stmt);
         </div>
     </header>
     <main>
-        <div class="intro">
-            <h2>Billing Information</h2>
-            <p>Please fill in your details to complete your purchase.</p>
+        <div class="intro2">
+            <div class="cart_button_left">
+                <a href="cart.php" class="btn">Go Back</a>
+            </div>
+            <div class="intro_message_right">
+                <h2>Billing Information</h2>
+                <p>Please fill in your details to complete your purchase.</p>
+            </div>
         </div>
-        <form action="../validate/process-billing.php" method="POST">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['fullname']); ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="address">Shipping Address:</label>
-                <textarea id="address" name="address" required></textarea>
-            </div>
-            <div class="form-group"> <label for="payment_method">Payment Method:</label>
-                <select id="payment_method" name="payment_method" required> <option value="cod">Cash on Delivery (COD)</option> <option value="credit_card">Credit Card</option> </select> 
-            </div>
-            <button type="submit" name="submit_billing">Proceed to Payment</button>
-        </form>
+        <div class="billing_container">
+            <form action="../validate/process-billing.php" method="POST">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['fullname']); ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Shipping Address:</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="payment_method">Payment Method:</label>
+                    <select id="payment_method" name="payment_method" required>
+                        <option value="cod">Cash on Delivery (COD)</option>
+                        <option value="credit_card">Credit Card</option>
+                    </select>
+                </div>
+                <button type="submit" name="submit_billing">Proceed to Payment</button>
+            </form>
+        </div>
     </main>
     <footer>
         <!-- Include your site's footer here -->
