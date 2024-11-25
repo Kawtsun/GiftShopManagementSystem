@@ -75,11 +75,16 @@ $cart_is_empty = true; // Flag to check if cart is empty
         <?php 
             if (isset($_SESSION['success_message'])) { echo "<div id='success-message' class='alert success'>{$_SESSION['success_message']}</div>"; unset($_SESSION['success_message']); } 
         ?>
-        <div class="profile_buttons"> <a href="recent-orders.php" class="btn">View Recent Orders</a> </div>
         <div class="intro2">
-            <h2>Your Cart</h2>
-            <p>These are the items you've added to your cart.</p>
+            <div class="intro_message">
+                <h2>Your Cart</h2>
+                <p>These are the items you've added to your cart.</p>
+            </div>
+            <div class="cart_button"> 
+                <a href="recent-orders.php" class="btn">Recent Orders</a> 
+            </div>
         </div>
+        
         <div class="product_container">
             <?php if (mysqli_num_rows($result) > 0): ?>
                 <?php $cart_is_empty = false; // Cart is not emptyz
@@ -115,14 +120,20 @@ $cart_is_empty = true; // Flag to check if cart is empty
             <?php endif; ?>
         </div>
         <?php if (!$cart_is_empty): ?>
-        <div class="total_price"> 
-            <h3>Total Price: ₱<?php echo number_format($total_price, 2); ?></h3> 
-        </div>
+            <div class="total_billing">
+                <div class="proceed_to_billing">
+                    <a href="billing.php" class="btn">Proceed to Billing</a>
+                </div>
+                <div class="total_price">
+                    <h3>Total: ₱<?php echo number_format($total_price, 2); ?></h3>
+                </div>
+            </div>
         <?php endif; ?>
+
+
+
     </main>
-    <div class="proceed_to_billing"> 
-        <a href="billing.php" class="btn">Proceed to Billing</a> 
-    </div>
+    
     <footer>
         <!-- Include your site's footer here -->
     </footer>

@@ -273,3 +273,56 @@ header p {
     width: 200px;
 }
 
+.intro2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
+    max-width: 100%;
+    margin: 30px auto;
+    margin-bottom: 20px;
+}
+
+.intro_message {
+    text-align: left;
+    flex: 1;
+}
+
+.cart_button {
+    margin-left: auto;
+}
+
+.btn{
+    text-decoration: none;
+    color: white;
+    background-color: #3b3030;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 12px 40px;
+    font-weight: bold;
+}
+
+.total_billing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
+    max-width: 100%;
+    margin: 30px auto;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.total_price {
+    border-radius: 8px;
+    border: 1px solid;
+    padding: 15px 40px;
+    position: absolute;
+    right: 0;
+}
+
+.proceed_to_billing {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
