@@ -14,10 +14,10 @@ body {
     text-align: center;
     font-size: 20px;
     background-color: #ffedd0;
-    color: #202020d3;
+    color: #212121cc;
 }
 
-h1, h2, h3, h4, b {
+h1, h2, h3, h4, b, strong {
     color: black;
 }
 
@@ -96,8 +96,11 @@ h1, h2, h3, h4, b {
     margin-bottom: 50px;
 }
 
-
+.intro p {
+    color: #ffffffcc
+}
 .intro {
+    padding: 15px;
     color: white;
     min-height: 300px;
     background-color: #3b3030;
@@ -115,7 +118,7 @@ h1, h2, h3, h4, b {
 .form_data input[type=submit] {
     width: 200px;
     margin: 30px auto -5px;
-    color: white;
+    color: #ffffffcc;
     background-color: #3b3030;
     border: 1px solid transparent;
     border-radius: 8px;
@@ -221,10 +224,6 @@ header p {
 
 .total_price {
     text-align: left;
-}
-
-.empty {
-    color: black;
 }
 
 .card_buttons {
@@ -404,7 +403,7 @@ header p {
 .empty_cart_message {
     margin: 20px 0;
     font-size: 18px;
-    color: #333;
+    color: #212121cc;
 }
 
 .total_billing {
@@ -535,5 +534,3 @@ header p {
 .cart_table2 .subtotal {
     font-weight: bold;
 }
-
-

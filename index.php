@@ -33,7 +33,7 @@ $all_products = $conn->query($sql);
                     <ul>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="pages/catalog.php">Catalog</a></li>
-                        <li><a href="index.php">About</a></li>
+                        <li><a href="pages/about.php">About</a></li>
                         <li><a href="pages/cart.php">Cart</a></li>
                     </ul>
                 </nav>

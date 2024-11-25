@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch recent orders
 $sql = "SELECT order_id, order_date, name, email, address, payment_method 
         FROM orders 
         WHERE user_id = ? 
@@ -23,7 +22,6 @@ $result = mysqli_stmt_get_result($stmt);
 $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_stmt_close($stmt);
 
-// Fetch order items and calculate total price for each order
 $order_items = [];
 $order_totals = [];
 foreach ($orders as $order) {
@@ -40,7 +38,6 @@ foreach ($orders as $order) {
     $order_items[$order_id] = $items;
     mysqli_stmt_close($stmt);
     
-    // Calculate total price for the order
     $total_price = 0;
     foreach ($items as $item) {
         $total_price += $item['product_price'] * $item['quantity'];
@@ -58,7 +55,6 @@ foreach ($orders as $order) {
     <title>Recent Orders - Likhang Kultura</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Knewave&family=Rubik+Glitch&family=Shrikhand&family=Sriracha&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <script src="../script.js"></script>
 </head>
 <body>
     <header>
@@ -71,7 +67,7 @@ foreach ($orders as $order) {
                     <ul>
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="catalog.php">Catalog</a></li>
-                        <li><a href="index.php">About</a></li>
+                        <li><a href="about.php">About</a></li>
                         <li><a href="cart.php">Cart</a></li>
                     </ul>
                 </nav>

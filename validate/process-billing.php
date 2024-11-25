@@ -65,7 +65,7 @@ if (isset($_POST['submit_billing'])) {
     if ($payment_method == 'credit_card') {
         $_SESSION['success_message'] = "Order Confirmation! <br> Thank you for shopping with us! Your purchase has been successfully processed.";
     } else {
-        $_SESSION['success_message'] = "Order Confirmation! <br> Thank you for shopping with us! Please pay once you receive your order.";
+        $_SESSION['success_message'] = "Order Confirmation! <br>Thank you for shopping with us! Please pay once you receive your order.";
     }
 
     // Store order summary in session

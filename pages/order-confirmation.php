@@ -2,15 +2,13 @@
 session_start();
 
 if (!isset($_SESSION['order_summary'])) {
-    // Optional: Display a message if there's no order summary available
-    echo "<p>There is no order to display. Please check your recent orders or make a new purchase.</p>";
+    header("Location: ../index.php");
     exit();
 }
 
 $order_summary = $_SESSION['order_summary'];
 $success_message = $_SESSION['success_message'];
 
-// Clear the session data to avoid displaying the same message on refresh
 unset($_SESSION['order_summary']);
 unset($_SESSION['success_message']);
 ?>
@@ -23,7 +21,6 @@ unset($_SESSION['success_message']);
     <title>Order Confirmation - Likhang Kultura</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Knewave&family=Rubik+Glitch&family=Shrikhand&family=Sriracha&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <script src="../script.js"></script>
 </head>
 <body>
     <header>
@@ -36,7 +33,7 @@ unset($_SESSION['success_message']);
                     <ul>
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="catalog.php">Catalog</a></li>
-                        <li><a href="index.php">About</a></li>
+                        <li><a href="about.php">About</a></li>
                         <li><a href="cart.php">Cart</a></li>
                     </ul>
                 </nav>

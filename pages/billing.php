@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Check if cart is empty
 $sql = "SELECT COUNT(*) AS item_count FROM cart WHERE user_id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -28,7 +27,6 @@ if ($cart_is_empty) {
     exit();
 }
 
-// Fetch user details
 $sql = "SELECT fullname, email FROM users WHERE id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -45,7 +43,7 @@ mysqli_stmt_close($stmt);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Billing - Likhang Kultura</title>
+    <title>Checkout - Likhang Kultura</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Knewave&family=Rubik+Glitch&family=Shrikhand&family=Sriracha&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
@@ -62,7 +60,7 @@ mysqli_stmt_close($stmt);
                     <ul>
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="catalog.php">Catalog</a></li>
-                        <li><a href="index.php">About</a></li>
+                        <li><a href="about.php">About</a></li>
                         <li><a href="cart.php">Cart</a></li>
                     </ul>
                 </nav>
@@ -108,8 +106,8 @@ mysqli_stmt_close($stmt);
                 <div class="form-group">
                     <label for="payment_method">Payment Method:</label>
                     <select id="payment_method" name="payment_method" required>
-                        <option value="cod">Cash on Delivery (COD)</option>
-                        <option value="credit_card">Credit Card</option>
+                        <option value="Cash on Delivery (COD)">Cash on Delivery (COD)</option>
+                        <option value="Credit Card">Credit Card</option>
                     </select>
                 </div>
                 <button type="submit" name="submit_billing">Proceed to Payment</button>
