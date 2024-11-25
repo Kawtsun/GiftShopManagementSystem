@@ -88,7 +88,10 @@ h1, h2, h3, h4, b {
 
 
 .intro h1 {
-    font-family: "Sriracha", cursive;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    color: white;
+    font-family: "Knewave", system-ui; /*"Sriracha", cursive;*/
     font-size: 100px;
     margin-bottom: 50px;
 }
