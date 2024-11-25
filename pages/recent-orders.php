@@ -86,9 +86,14 @@ foreach ($orders as $order) {
         </div>
     </header>
     <main>
-        <div class="intro3">
-            <h2>Recent Orders</h2>
-            <p>Here are your recent orders.</p>
+        <div class="intro2">
+            <div class="cart_button_left">
+                <a href="cart.php" class="btn">Go Back</a>
+            </div>
+            <div class="intro_message_right">
+                <h2>Recent Orders</h2>
+                <p>Here are your recent orders.</p>
+            </div>
         </div>
         <div class="order_summary">
             <?php if (count($orders) > 0): ?>
