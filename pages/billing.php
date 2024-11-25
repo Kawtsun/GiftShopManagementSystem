@@ -11,6 +11,23 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+// Check if cart is empty
+$sql = "SELECT COUNT(*) AS item_count FROM cart WHERE user_id = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "i", $user_id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$row = mysqli_fetch_assoc($result);
+$cart_is_empty = ($row['item_count'] == 0);
+
+mysqli_stmt_close($stmt);
+
+if ($cart_is_empty) {
+    $_SESSION['error_message'] = "Your cart is empty. Please add items to your cart before proceeding to billing.";
+    header("Location: cart.php");
+    exit();
+}
+
 // Fetch user details
 $sql = "SELECT fullname, email FROM users WHERE id = ?";
 $stmt = mysqli_prepare($conn, $sql);

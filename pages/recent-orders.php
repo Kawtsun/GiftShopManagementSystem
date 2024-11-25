@@ -56,21 +56,50 @@ foreach ($orders as $order) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recent Orders - Likhang Kultura</title>
-    <link rel="stylesheet" href="../style.css"> <!-- Ensure path is correct -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <script src="../script.js"></script>
 </head>
 <body>
     <header>
-        <!-- Include your site's header here -->
+        <div class="navbar">
+            <div class="logo">
+                <img src="../images/logo.svg" alt="Likhang Kultura">
+            </div>
+            <div class="nav-center">
+                <nav class="navlinks">
+                    <ul>
+                        <li><a href="../index.php">Home</a></li>
+                        <li><a href="catalog.php">Catalog</a></li>
+                        <li><a href="index.php">About</a></li>
+                        <li><a href="cart.php">Cart</a></li>
+                    </ul>
+                </nav>
+                <p><?php if (isset($_SESSION['user'])) {
+                    echo "Welcome, " . $_SESSION['user'];
+                } ?></p>
+                <div class="buttons">
+                    <?php if (isset($_SESSION['user'])): ?>
+                    <a href="../validate/logout-validate.php" class="signup">Logout</a>
+                    <?php else: ?>
+                    <a href="login.php" class="login">Log In</a>
+                    <a href="register.php" class="signup">Sign Up</a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
     </header>
     <main>
-        <div class="intro">
+        <div class="intro3">
             <h2>Recent Orders</h2>
             <p>Here are your recent orders.</p>
         </div>
-        <div class="order_list">
+        <div class="order_summary">
             <?php if (count($orders) > 0): ?>
                 <?php foreach ($orders as $order): ?>
-                    <div class="order">
+                    <div class="summary_intro">
                         <h3>Order ID: <?php echo $order['order_id']; ?></h3>
                         <p><strong>Date:</strong> <?php echo $order['order_date']; ?></p>
                         <p><strong>Name:</strong> <?php echo htmlspecialchars($order['name']); ?></p>
@@ -78,7 +107,7 @@ foreach ($orders as $order) {
                         <p><strong>Address:</strong> <?php echo nl2br(htmlspecialchars($order['address'])); ?></p>
                         <p><strong>Payment Method:</strong> <?php echo htmlspecialchars(ucfirst(str_replace('_', ' ', $order['payment_method']))); ?></p>
                         <h4>Items Purchased:</h4>
-                        <table>
+                        <table class="cart_table2">
                             <thead>
                                 <tr>
                                     <th>Product Code</th>
