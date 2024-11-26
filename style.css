@@ -114,21 +114,20 @@ h1, h2, h3, h4, b, strong {
 .buttons .signup {
     border: 1px solid transparent;
     background-color: #3b3030;
+    transition: background-color 0.3s ease-in-out; /* More specific transition property */
 }
 
 .buttons .signup:hover {
-    border: 1px solid transparent;
     background-color: #282121;
-    transition: ease 300ms;
 }
 
 .buttons .login {
     border: 1px solid rgba(255, 255, 255, 0.422);
+    transition: border-color 0.3s ease-in-out; /* More specific transition property */
 }
 
 .buttons .login:hover {
-    border: 1px solid rgba(0, 0, 0, 0.422);
-    transition: ease 300ms;
+    border-color: rgba(0, 0, 0, 0.422);
 }
 
 .form_container {
@@ -175,17 +174,35 @@ h1, h2, h3, h4, b, strong {
 .form_data input[type=submit] {
     width: 200px;
     margin: 30px auto -5px;
-    color: #ffffffcc;
+    color: #ffffff;
     background-color: #3b3030;
     border: 1px solid transparent;
     border-radius: 8px;
     padding: 12px 40px;
     font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.form_data input[type=submit]:hover {
+    background-color: #282121;
 }
 
 .message {
     margin-top: 30px;
 }
+
+.message a {
+    color: inherit;
+    text-decoration: underline #3b3030 4px;
+    text-underline-offset: 8px;
+    transition: font-weight 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
+}
+
+.message a:hover {
+    font-weight: bold;
+    text-decoration-color: #555555; 
+}
+
 
 .alert {
     color: white; 
@@ -324,12 +341,11 @@ header p {
     color: white;
     background-color: #3b3030;
     border: 1px solid transparent;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .card_buttons .add:hover {
     background-color: #282121;
-    transition: ease 300ms;
-    border: 1px solid transparent;
 }
 
 .intro2 {
@@ -365,7 +381,7 @@ header p {
 }
 
 
-.btn{
+.btn {
     text-decoration: none;
     color: white;
     background-color: #3b3030;
@@ -373,11 +389,11 @@ header p {
     border-radius: 8px;
     padding: 12px 40px;
     font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .btn:hover {
     background-color: #282121;
-    transition: ease 300ms;
 }
 
 .cart_table {
@@ -447,27 +463,25 @@ header p {
     font-weight: bold;
     color: white;
     margin: 0 5px;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .update {
-    border: 1px solid transparent;
     background-color: #3b3030;
 }
 
 .update:hover {
     background-color: #282121;
-    transition: ease 300ms;
 }
 
 .remove {
-    border: 1px solid transparent;
     background-color: rgb(205, 67, 67);
 }
 
 .remove:hover {
     background-color: rgb(174, 58, 58);
-    transition: ease 300ms;
 }
+
 
 
 .total_billing {
@@ -546,11 +560,11 @@ header p {
     border-radius: 8px;
     padding: 12px 40px;
     font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .billing_container button:hover {
     background-color: #282121;
-    transition: ease 300ms;
 }
 
 .order_summary {
