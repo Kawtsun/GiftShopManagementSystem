@@ -661,3 +661,37 @@ header p {
     margin: 0 10px;
     text-decoration: none;
 }
+
+
+.programmers {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    background-color: white;
+    margin: 30px 0;
+}
+
+.programmers h3, h4{
+    margin-bottom: 15px;
+}
+
+.programmers h4 {
+    color: #212121cc;
+}
+
+.programmers img {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 50%;
+}
+
+.projectsource h5 {
+    margin-bottom: 15px;
+}
+
+.projectsource {
+    text-align: right;
+}
+
+.prog {
+    margin: 15px 0;
+}

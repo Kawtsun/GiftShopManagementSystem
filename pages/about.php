@@ -52,3 +52,35 @@ session_start();
             </div>
         </div>
     </header>
+<body>
+    <main>
+        <div class="intro3">
+            <h2>About this Project</h2>
+            <p>
+                This project is from our <b> Advance Web Development (CS6) </b> subject which we are tasked to create a <b><i>Gift Shop Management System</i></b> that allows customers to browse products, make purchases/orders, and customer information.
+            </p>
+            <div class="programmers">
+                <h3>Programmers</h3>
+                
+                <div class="prog">
+                    <h4>Carlos Joseph Dizon</h4>
+                    <img src="../images/programmer.jpg" alt="" width="150px">
+                </div>
+                <div class="prog">
+                    <h4>Morpheus Joshua Francisco</h4>
+                    <img src="../images/programmer2.png" alt="" width="150px">
+                </div>
+                
+                <div class="projectsource">
+                    <h5>Project Source Code</h5>
+                    <a href="https://github.com/Kawtsun/GiftShopManagementSystem">
+                        <img src="../images/github.svg" alt="" width="40px">
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
