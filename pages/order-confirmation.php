@@ -2,8 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['order_summary'])) {
-    // Optional: Display a message if there's no order summary available
-    echo "<p>There is no order to display. Please check your recent orders or make a new purchase.</p>";
+    header("Location: ../index.php");
     exit();
 }
 
@@ -11,13 +10,11 @@ $order_summary = $_SESSION['order_summary'];
 $success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : null;
 $user_id = $_SESSION['user_id'];
 
-// Clear the session data to avoid displaying the same message on refresh
 unset($_SESSION['order_summary']);
 unset($_SESSION['success_message']);
 
 include '../validate/db.php';
 
-// Fetch profile information
 $sql = "SELECT fullname, shipping_address FROM profile WHERE user_id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -26,7 +23,6 @@ $result = mysqli_stmt_get_result($stmt);
 $profile = mysqli_fetch_assoc($result);
 mysqli_stmt_close($stmt);
 
-// Initialize profile fields if no profile exists
 if ($profile === null) {
     $profile = [
         'fullname' => $order_summary['name'],

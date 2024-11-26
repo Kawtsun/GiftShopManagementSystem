@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Check if cart is empty
 $sql = "SELECT COUNT(*) AS item_count FROM cart WHERE user_id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -28,7 +27,6 @@ if ($cart_is_empty) {
     exit();
 }
 
-// Fetch user details
 $sql = "SELECT fullname, email FROM users WHERE id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -37,7 +35,6 @@ $result = mysqli_stmt_get_result($stmt);
 $user = mysqli_fetch_assoc($result);
 mysqli_stmt_close($stmt);
 
-// Fetch profile information
 $sql = "SELECT shipping_address FROM profile WHERE user_id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -46,7 +43,6 @@ $result = mysqli_stmt_get_result($stmt);
 $profile = mysqli_fetch_assoc($result);
 mysqli_stmt_close($stmt);
 
-// Initialize shipping address if profile does not exist
 if ($profile === null) {
     $profile = [
         'shipping_address' => ''

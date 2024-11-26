@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch user profile information
 $sql = "SELECT p.fullname, p.shipping_address, u.email FROM profile p JOIN users u ON p.user_id = u.id WHERE p.user_id = ?";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -21,7 +20,6 @@ $profile = mysqli_fetch_assoc($result);
 
 mysqli_stmt_close($stmt);
 
-// If profile doesn't exist, fetch email from users table and initialize profile fields
 if ($profile === null) {
     $sql = "SELECT fullname, email FROM users WHERE id = ?";
     $stmt = mysqli_prepare($conn, $sql);
@@ -39,7 +37,6 @@ if ($profile === null) {
     mysqli_stmt_close($stmt);
 }
 
-// Update profile information
 $errors = [];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST['fullname'];
@@ -48,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
 
-    // Validate password
     if (!empty($password)) {
         if (strlen($password) < 8) {
             $errors[] = "Password must be at least 8 characters long.";
@@ -58,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-        // Update profile table
         $sql = "SELECT * FROM profile WHERE user_id = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "i", $user_id);
@@ -77,14 +72,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        // Update users table
         $sql = "UPDATE users SET fullname = ?, email = ? WHERE id = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "ssi", $fullname, $email, $user_id);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
 
-        // Update password if provided
         if (!empty($password)) {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $sql = "UPDATE users SET password = ? WHERE id = ?";
