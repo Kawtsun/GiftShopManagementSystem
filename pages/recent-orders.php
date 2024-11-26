@@ -45,6 +45,16 @@ foreach ($orders as $order) {
     $order_totals[$order_id] = $total_price;
 }
 
+$sql = "SELECT fullname, shipping_address, email FROM profile WHERE user_id = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "i", $user_id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$profile = mysqli_fetch_assoc($result);
+mysqli_stmt_close($stmt);
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -69,6 +79,7 @@ foreach ($orders as $order) {
                         <li><a href="catalog.php">Catalog</a></li>
                         <li><a href="about.php">About</a></li>
                         <li><a href="cart.php">Cart</a></li>
+                        <li><a href="profile.php">Profile</a></li>
                     </ul>
                 </nav>
                 <p><?php if (isset($_SESSION['user'])) {
@@ -102,8 +113,8 @@ foreach ($orders as $order) {
                         <h3>Order ID: <?php echo $order['order_id']; ?></h3>
                         <p><strong>Date:</strong> <?php echo $order['order_date']; ?></p>
                         <p><strong>Name:</strong> <?php echo htmlspecialchars($order['name']); ?></p>
-                        <p><strong>Email:</strong> <?php echo htmlspecialchars($order['email']); ?></p>
-                        <p><strong>Address:</strong> <?php echo nl2br(htmlspecialchars($order['address'])); ?></p>
+                        <p><strong>Email:</strong> <?php echo htmlspecialchars($profile['email']); ?></p>
+                        <p><strong>Shipping Address:</strong> <?php echo nl2br(htmlspecialchars($profile['shipping_address'])); ?></p>
                         <p><strong>Payment Method:</strong> <?php echo htmlspecialchars(ucfirst(str_replace('_', ' ', $order['payment_method']))); ?></p>
                         <h4>Items Purchased:</h4>
                         <table class="cart_table2">

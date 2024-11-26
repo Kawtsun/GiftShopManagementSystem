@@ -19,7 +19,6 @@
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="index.php">Catalog</a></li>
                         <li><a href="index.php">About</a></li>
-                        <li><a href="index.php">Cart</a></li>
                     </ul>
                 </nav>
             </div>

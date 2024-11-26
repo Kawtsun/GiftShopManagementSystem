@@ -35,6 +35,7 @@ $all_products = $conn->query($sql);
                         <li><a href="pages/catalog.php">Catalog</a></li>
                         <li><a href="pages/about.php">About</a></li>
                         <li><a href="pages/cart.php">Cart</a></li>
+                        <li><a href="pages/profile.php">Profile</a></li>
                     </ul>
                 </nav>
                 <p><?php if (isset($_SESSION['user'])) {

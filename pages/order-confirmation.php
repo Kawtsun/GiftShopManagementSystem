@@ -2,15 +2,37 @@
 session_start();
 
 if (!isset($_SESSION['order_summary'])) {
-    header("Location: ../index.php");
+    // Optional: Display a message if there's no order summary available
+    echo "<p>There is no order to display. Please check your recent orders or make a new purchase.</p>";
     exit();
 }
 
 $order_summary = $_SESSION['order_summary'];
-$success_message = $_SESSION['success_message'];
+$success_message = isset($_SESSION['success_message']) ? $_SESSION['success_message'] : null;
+$user_id = $_SESSION['user_id'];
 
+// Clear the session data to avoid displaying the same message on refresh
 unset($_SESSION['order_summary']);
 unset($_SESSION['success_message']);
+
+include '../validate/db.php';
+
+// Fetch profile information
+$sql = "SELECT fullname, shipping_address FROM profile WHERE user_id = ?";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "i", $user_id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$profile = mysqli_fetch_assoc($result);
+mysqli_stmt_close($stmt);
+
+// Initialize profile fields if no profile exists
+if ($profile === null) {
+    $profile = [
+        'fullname' => $order_summary['name'],
+        'shipping_address' => $order_summary['address'],
+    ];
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +41,11 @@ unset($_SESSION['success_message']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Confirmation - Likhang Kultura</title>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Knewave&family=Rubik+Glitch&family=Shrikhand&family=Sriracha&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <script src="../script.js"></script>
 </head>
 <body>
     <header>
@@ -33,8 +58,9 @@ unset($_SESSION['success_message']);
                     <ul>
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="catalog.php">Catalog</a></li>
-                        <li><a href="about.php">About</a></li>
+                        <li><a href="index.php">About</a></li>
                         <li><a href="cart.php">Cart</a></li>
+                        <li><a href="profile.php">Profile</a></li>
                     </ul>
                 </nav>
                 <p><?php if (isset($_SESSION['user'])) {
@@ -58,9 +84,9 @@ unset($_SESSION['success_message']);
         </div>
         <div class="order_summary">
             <div class="summary_intro">
-                <p><strong>Name:</strong> <?php echo htmlspecialchars($order_summary['name']); ?></p>
+                <p><strong>Name:</strong> <?php echo htmlspecialchars($profile['fullname']); ?></p>
                 <p><strong>Email:</strong> <?php echo htmlspecialchars($order_summary['email']); ?></p>
-                <p><strong>Shipping Address:</strong> <?php echo nl2br(htmlspecialchars($order_summary['address'])); ?></p>
+                <p><strong>Shipping Address:</strong> <?php echo nl2br(htmlspecialchars($profile['shipping_address'])); ?></p>
                 <p><strong>Payment Method:</strong> <?php echo htmlspecialchars(ucfirst(str_replace('_', ' ', $order_summary['payment_method']))); ?></p>
                 <h4>Items Purchased:</h4>
                 <table class="cart_table2">

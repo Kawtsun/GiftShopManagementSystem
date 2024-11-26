@@ -16,6 +16,7 @@ if (isset($_POST['submit_checkout'])) {
     $address = $_POST['address'];
     $payment_method = $_POST['payment_method'];
 
+    // Save order details
     $sql = "INSERT INTO orders (user_id, name, email, address, payment_method) 
             VALUES (?, ?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
@@ -24,6 +25,7 @@ if (isset($_POST['submit_checkout'])) {
     $order_id = mysqli_insert_id($conn);
     mysqli_stmt_close($stmt);
 
+    // Fetch cart items and complete product details
     $sql = "SELECT c.main_product_id, c.quantity, mp.product_code, mp.product_name, mp.product_price 
             FROM cart c 
             JOIN main_products mp ON c.main_product_id = mp.product_id 
@@ -35,6 +37,7 @@ if (isset($_POST['submit_checkout'])) {
     $cart_items = mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_stmt_close($stmt);
 
+    // Insert order items into order_items table
     $sql = "INSERT INTO order_items (order_id, main_product_id, quantity) 
             VALUES (?, ?, ?)";
     $stmt = mysqli_prepare($conn, $sql);
@@ -44,24 +47,21 @@ if (isset($_POST['submit_checkout'])) {
     }
     mysqli_stmt_close($stmt);
 
+    // Calculate total price
     $total_price = 0;
     foreach ($cart_items as $item) {
         $subtotal = $item['product_price'] * $item['quantity'];
         $total_price += $subtotal;
     }
 
+    // Clear the cart after order is placed
     $sql = "DELETE FROM cart WHERE user_id = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "i", $user_id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    if ($payment_method == 'credit_card') {
-        $_SESSION['success_message'] = "Order Confirmation! <br> Thank you for shopping with us! Your purchase has been successfully processed.";
-    } else {
-        $_SESSION['success_message'] = "Order Confirmation! <br>Thank you for shopping with us! Please pay once you receive your order.";
-    }
-
+    // Set order summary and success message in session
     $_SESSION['order_summary'] = [
         'order_id' => $order_id,
         'name' => $name,
@@ -71,7 +71,31 @@ if (isset($_POST['submit_checkout'])) {
         'order_items' => $cart_items,
         'total_price' => $total_price
     ];
+    
+    $_SESSION['success_message'] = ($payment_method == 'Credit Card') 
+        ? "Order Confirmation! Thank you for shopping with us! Your purchase has been successfully processed."
+        : "Order Confirmation! Thank you for shopping with us! Please pay once you receive your order.";
 
+    // Update profile with shipping address if it doesn't already exist
+    $sql = "SELECT * FROM profile WHERE user_id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $user_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if (mysqli_num_rows($result) > 0) {
+        $sql = "UPDATE profile SET shipping_address = ? WHERE user_id = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "si", $address, $user_id);
+    } else {
+        $sql = "INSERT INTO profile (user_id, fullname, shipping_address, email) VALUES (?, ?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "isss", $user_id, $name, $address, $email);
+    }
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    // Redirect to order confirmation
     header("Location: ../pages/order-confirmation.php");
     exit();
 }
