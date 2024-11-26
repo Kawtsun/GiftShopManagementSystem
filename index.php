@@ -39,10 +39,10 @@ $all_products = $conn->query($sql);
             </div>
             <div class="profile_cart">
                 <a href="pages/profile.php">
-                    <img src="images/user.svg" alt="Profile" width="30px" class="profile">
+                    <img src="images/user.svg" alt="Profile" width="25px" class="profile">
                 </a>
                 <a href="pages/cart.php">
-                    <img src="images/shopping-cart.svg" alt="Cart" width="30px" class="cart">
+                    <img src="images/shopping-cart.svg" alt="Cart" width="25px" class="cart">
                 </a>
             </div>
             <div class="buttons">

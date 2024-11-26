@@ -124,10 +124,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="profile_cart">
                 <a href="profile.php">
-                    <img src="../images/user.svg" alt="Profile" width="30px" class="profile active">
+                    <img src="../images/user.svg" alt="Profile" width="25px" class="profile active">
                 </a>
                 <a href="cart.php">
-                    <img src="../images/shopping-cart.svg" alt="Cart" width="30px" class="cart">
+                    <img src="../images/shopping-cart.svg" alt="Cart" width="25px" class="cart">
                 </a>
             </div>
             <div class="buttons">
