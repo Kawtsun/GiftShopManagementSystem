@@ -734,3 +734,16 @@ footer {
     padding: 30px;
     text-align: center;
 }
+
+.product_container .card {
+    position: relative;
+    overflow: hidden;
+}
+
+.product_container .card .image img {
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.product_container .card:hover .image img {
+    transform: scale(1.1);
+}
