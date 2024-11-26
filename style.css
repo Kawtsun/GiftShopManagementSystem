@@ -31,16 +31,20 @@ h1, h2, h3, h4, b, strong {
     font-weight: bold;
 }
 
-
 .nav-center {
     display: flex;
     align-items: center;
 }
 
+.navlinks {
+    margin-left: 20px;
+}
+
 .navbar ul {
     display: flex;
     list-style: none;
-    text-decoration: none;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar ul li {
@@ -52,6 +56,18 @@ h1, h2, h3, h4, b, strong {
     text-decoration: none;
 }
 
+.profile_cart {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.navbar .buttons {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
 .navbar .buttons a {
     margin-left: 20px;
     color: white;
@@ -60,12 +76,10 @@ h1, h2, h3, h4, b, strong {
     padding: 12px 40px;
 }
 
-
-
 .navbar .logo img {
     width: 150px;
-    height: auto;
 }
+
 .buttons .signup {
     border: 1px solid transparent;
     background-color: #3b3030;
@@ -103,7 +117,7 @@ h1, h2, h3, h4, b, strong {
     letter-spacing: 5px;
     text-transform: uppercase;
     color: white;
-    font-family: "Knewave", system-ui; /*"Sriracha", cursive;*/
+    font-family: "Knewave", system-ui;
     font-size: 50px;
     margin-bottom: 50px;
 }

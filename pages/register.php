@@ -14,12 +14,12 @@ session_start();
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <header>
+<header>
         <div class="navbar">
-            <div class="logo">
-                <img src="../images/logo.svg" alt="Likhang Kultura">
-            </div>
             <div class="nav-center">
+                <div class="logo">
+                    <img src="../images/logo.svg" alt="Likhang Kultura">
+                </div>
                 <nav class="navlinks">
                     <ul>
                         <li><a href="../index.php">Home</a></li>
@@ -29,7 +29,6 @@ session_start();
                 </nav>
             </div>
         </div>
-        
     </header>
     <div class="form_container">
         <div class="intro_register">

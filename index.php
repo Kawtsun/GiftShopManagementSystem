@@ -25,37 +25,42 @@ $all_products = $conn->query($sql);
 <body>
     <header>
         <div class="navbar">
-            <div class="logo">
-                <img src="images/logo.svg" alt="Likhang Kultura">
-            </div>
             <div class="nav-center">
+                <div class="logo">
+                    <img src="images/logo.svg" alt="Likhang Kultura">
+                </div>
                 <nav class="navlinks">
                     <ul>
-                        <li><a href="index.php">Home</a></li>
+                        <li><a href="../index.php">Home</a></li>
                         <li><a href="pages/catalog.php">Catalog</a></li>
                         <li><a href="pages/about.php">About</a></li>
                     </ul>
                 </nav>
-                <div class="profile_cart">
-                    <a href="pages/profile.php"> <img src="images/user.svg" alt="" width="30px" class="profile"> </a>
-                    <a href="pages/cart.php"> <img src="images/shopping-cart.svg" alt="" width="30px" class="cart"> </a>
-                </div>
-                <p><?php if (isset($_SESSION['user'])) {
-                    echo "Welcome, " . $_SESSION['user'];
-                }
-                 ?></p>
-                
-                <div class="buttons">
-                    <?php if (isset($_SESSION['user'])): ?>
+            </div>
+            <div class="profile_cart">
+                <a href="pages/profile.php">
+                    <img src="images/user.svg" alt="Profile" width="30px" class="profile">
+                </a>
+                <a href="pages/cart.php">
+                    <img src="images/shopping-cart.svg" alt="Cart" width="30px" class="cart">
+                </a>
+            </div>
+            <div class="buttons">
+                <?php if (isset($_SESSION['user'])) {
+                    echo "<p>Welcome, " . $_SESSION['user'] . "</p>";
+                } ?>
+                <?php if (isset($_SESSION['user'])): ?>
                     <a href="validate/logout-validate.php" class="signup">Logout</a>
-                    <?php else: ?>
+                <?php else: ?>
                     <a href="pages/login.php" class="login">Log In</a>
                     <a href="pages/register.php" class="signup">Sign Up</a>
-                    <?php endif; ?>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </header>
+
+
+
     <main>
         <div class="intro">
             <h1>Featured Products</h1>

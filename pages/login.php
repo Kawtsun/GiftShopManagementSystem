@@ -8,22 +8,21 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <header>
+<header>
         <div class="navbar">
-            <div class="logo">
-                <img src="../images/logo.svg" alt="Likhang Kultura">
-            </div>
             <div class="nav-center">
+                <div class="logo">
+                    <img src="../images/logo.svg" alt="Likhang Kultura">
+                </div>
                 <nav class="navlinks">
                     <ul>
                         <li><a href="../index.php">Home</a></li>
-                        <li><a href="index.php">Catalog</a></li>
-                        <li><a href="index.php">About</a></li>
+                        <li><a href="catalog.php">Catalog</a></li>
+                        <li><a href="about.php">About</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
-        
     </header>
     <div class="form_container">
         <div class="intro_login">

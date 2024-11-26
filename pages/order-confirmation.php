@@ -50,30 +50,36 @@ if ($profile === null) {
 <body>
     <header>
         <div class="navbar">
-            <div class="logo">
-                <img src="../images/logo.svg" alt="Likhang Kultura">
-            </div>
             <div class="nav-center">
+                <div class="logo">
+                    <img src="../images/logo.svg" alt="Likhang Kultura">
+                </div>
                 <nav class="navlinks">
                     <ul>
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="catalog.php">Catalog</a></li>
-                        <li><a href="index.php">About</a></li>
-                        <li><a href="cart.php">Cart</a></li>
-                        <li><a href="profile.php">Profile</a></li>
+                        <li><a href="about.php">About</a></li>
                     </ul>
                 </nav>
-                <p><?php if (isset($_SESSION['user'])) {
-                    echo "Welcome, " . $_SESSION['user'];
-                } ?></p>
-                <div class="buttons">
-                    <?php if (isset($_SESSION['user'])): ?>
+            </div>
+            <div class="profile_cart">
+                <a href="profile.php">
+                    <img src="../images/user.svg" alt="Profile" width="30px" class="profile">
+                </a>
+                <a href="cart.php">
+                    <img src="../images/shopping-cart.svg" alt="Cart" width="30px" class="cart">
+                </a>
+            </div>
+            <div class="buttons">
+                <?php if (isset($_SESSION['user'])) {
+                    echo "<p>Welcome, " . $_SESSION['user'] . "</p>";
+                } ?>
+                <?php if (isset($_SESSION['user'])): ?>
                     <a href="../validate/logout-validate.php" class="signup">Logout</a>
-                    <?php else: ?>
+                <?php else: ?>
                     <a href="login.php" class="login">Log In</a>
                     <a href="register.php" class="signup">Sign Up</a>
-                    <?php endif; ?>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </header>
