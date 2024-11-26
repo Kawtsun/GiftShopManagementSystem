@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<header>
+    <header>
         <div class="navbar">
             <div class="nav-center">
                 <div class="logo">
@@ -24,27 +24,33 @@
             </div>
         </div>
     </header>
-    <div class="form_container">
-        <div class="intro_login">
-            <h1>Log in now</h1>
-        </div>
-
-        <?php
-            include '../validate/alert-login.php';
-        ?>
-
-        <form action="../validate/login-validate.php" method="POST">
-            <div class="form_data">
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="password" placeholder="Password">
-                <input type="submit" value="Log In" name="login">
+    <main>
+        <div class="form_container">
+            <div class="intro_login">
+                <h1>Log in now</h1>
             </div>
-        </form>
-        <div class="message">
-            <p>
-                Don't have an account? <a href="register.php">Sign up Here</a>
-            </p>
+
+            <?php
+                include '../validate/alert-login.php';
+            ?>
+
+            <form action="../validate/login-validate.php" method="POST">
+                <div class="form_data">
+                    <input type="email" name="email" placeholder="Email">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="submit" value="Log In" name="login">
+                </div>
+            </form>
+            <div class="message">
+                <p>
+                    Don't have an account? <a href="register.php">Sign up Here</a>
+                </p>
+            </div>
         </div>
-    </div>
+        </main>
+    
+        <footer>
+            Copyright &copy; 2024 Likhang Kultura All Rights Reserved.
+        </footer>
 </body>
 </html>

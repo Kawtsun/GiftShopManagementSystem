@@ -142,7 +142,7 @@ $cart_is_empty = mysqli_num_rows($result) === 0;
         </div>
     </main>    
     <footer>
-        <!-- Include your site's footer here -->
+        Copyright &copy; 2024 Likhang Kultura All Rights Reserved.
     </footer>
 </body>
 </html>

@@ -14,7 +14,7 @@ session_start();
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<header>
+    <header>
         <div class="navbar">
             <div class="nav-center">
                 <div class="logo">
@@ -30,30 +30,35 @@ session_start();
             </div>
         </div>
     </header>
-    <div class="form_container">
-        <div class="intro_register">
-            <h1>Sign up now</h1>
-        </div>
-
-        <?php
-        include '../validate/alert-register.php';
-        ?>
-
-        <form action="../validate/register-validate.php" method="POST">
-            <div class="form_data">
-                <input type="text" name="fullname" placeholder="Full Name">
-                <input type="email" name="email" placeholder="Email">
-                <input type="text" name="username" placeholder="Username">
-                <input type="password" name="password" placeholder="Password">
-                <input type="password" name="confirm_password" placeholder="Confirm Password">
-                <input type="submit" value="Sign Up" name="submit">
+    <main>
+        <div class="form_container">
+            <div class="intro_register">
+                <h1>Sign up now</h1>
             </div>
-        </form>
-        <div class="message">
-            <p>
-                Already have an account? <a href="login.php">Login Here</a>
-            </p>
+
+            <?php
+                include '../validate/alert-register.php';
+            ?>
+
+            <form action="../validate/register-validate.php" method="POST">
+                <div class="form_data">
+                    <input type="text" name="fullname" placeholder="Full Name">
+                    <input type="email" name="email" placeholder="Email">
+                    <input type="text" name="username" placeholder="Username">
+                    <input type="password" name="password" placeholder="Password">
+                    <input type="password" name="confirm_password" placeholder="Confirm Password">
+                    <input type="submit" value="Sign Up" name="submit">
+                </div>
+            </form>
+            <div class="message">
+                <p>
+                    Already have an account? <a href="login.php">Login Here</a>
+                </p>
+            </div>
         </div>
-    </div>
+    </main>
+    <footer>
+        Copyright &copy; 2024 Likhang Kultura All Rights Reserved.
+    </footer>
 </body>
 </html>

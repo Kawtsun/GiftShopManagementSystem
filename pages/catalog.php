@@ -89,5 +89,8 @@ $all_products = $conn->query($sql);
             ?>
         </div>
     </main>
+    <footer>
+        Copyright &copy; 2024 Likhang Kultura All Rights Reserved.
+    </footer>
 </body>
 </html>

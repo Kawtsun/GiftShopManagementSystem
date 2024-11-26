@@ -193,7 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </main>
     <footer>
-        <!-- Include your site's footer here -->
+        Copyright &copy; 2024 Likhang Kultura All Rights Reserved.
     </footer>
 </body>
 </html>
