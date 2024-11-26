@@ -176,7 +176,7 @@ header p {
 
 
 .product_container {
-    border: 1px solid #58585836;;;
+    border: 1px solid #58585836;
     margin: 30px auto;
     width: 1200px;
     border-radius: 8px;
@@ -185,6 +185,7 @@ header p {
     justify-content:flex-start;
     gap: 3rem;
     padding: 40px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .card img {
@@ -216,9 +217,14 @@ header p {
     margin: 15px 0;
 }
 
+.caption .product_name {
+    color: #212121;
+    font-weight: 500;
+}
 .caption .product_price, .product_subtotal {
-    font-weight: bold;
-    font-size: 16px;
+    color: #212121;
+    font-weight: 400;
+    font-size: 18px;
 }
 
 .price_subtotal {
@@ -337,7 +343,8 @@ header p {
     border-radius: 8px;
     overflow: hidden; 
     background-color: #58585836;
-    border: 1px solid #58585836;;
+    border: 1px solid #58585836;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .cart_table input[type=number] {
@@ -384,6 +391,7 @@ header p {
 }
 
 .cart_table .subtotal {
+    color: #212121;
     font-weight: bold;
 }
 
@@ -424,6 +432,7 @@ header p {
     width: 1200px;
     max-width: 100%;
     margin: 0 auto;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .total_price {
@@ -476,7 +485,8 @@ header p {
 }
 
 .billing_container input, textarea, select, option {
-    font-size: 16px;
+    font-family: inherit;
+    font-size: 18px;
     width: 100%;
     padding: 8px;
 }
@@ -502,15 +512,17 @@ header p {
     margin: 30px auto;
     padding: 40px;
     border-radius: 8px;
-    border: 1px solid #58585836;;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border: 1px solid #58585836
 }
 
 .summary_intro {
-    margin: 15px;
+    margin: 15px auto;
     border-radius: 8px;
     width: 100%;
     padding: 30px;
     background-color: white;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .summary_intro p{
