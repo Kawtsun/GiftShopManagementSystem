@@ -48,10 +48,12 @@ $cart_is_empty = mysqli_num_rows($result) === 0;
                         <li><a href="../index.php">Home</a></li>
                         <li><a href="catalog.php">Catalog</a></li>
                         <li><a href="about.php">About</a></li>
-                        <li><a href="cart.php">Cart</a></li>
-                        <li><a href="profile.php">Profile</a></li>
                     </ul>
                 </nav>
+                <div class="profile_cart">
+                    <a href="../pages/profile.php"> <img src="../images/user.svg" alt="" width="30px" class="profile"> </a>
+                    <a href="../pages/cart.php"> <img src="../images/shopping-cart.svg" alt="" width="30px" class="cart active"> </a>
+                </div>
                 <p><?php if (isset($_SESSION['user'])) {
                     echo "Welcome, " . $_SESSION['user'];
                 }

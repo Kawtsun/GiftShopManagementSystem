@@ -595,3 +595,30 @@ header p {
     margin: 0 auto;
     text-align: center;
 }
+
+.profile_cart .profile, .cart {
+    filter: invert(1);
+    transition: filter 0.3s ease;
+}
+
+.profile_cart .profile.active {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(210deg);
+}
+
+.profile_cart .cart.active {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(90deg);
+}
+
+.profile_cart .profile:hover {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(210deg);
+}
+
+.profile_cart .cart:hover {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(90deg);
+}
+
+.profile_cart a {
+    display: inline-block;
+    margin: 0 10px;
+    text-decoration: none;
+}

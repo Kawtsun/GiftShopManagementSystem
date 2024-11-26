@@ -34,14 +34,17 @@ $all_products = $conn->query($sql);
                         <li><a href="index.php">Home</a></li>
                         <li><a href="pages/catalog.php">Catalog</a></li>
                         <li><a href="pages/about.php">About</a></li>
-                        <li><a href="pages/cart.php">Cart</a></li>
-                        <li><a href="pages/profile.php">Profile</a></li>
                     </ul>
                 </nav>
+                <div class="profile_cart">
+                    <a href="pages/profile.php"> <img src="images/user.svg" alt="" width="30px" class="profile"> </a>
+                    <a href="pages/cart.php"> <img src="images/shopping-cart.svg" alt="" width="30px" class="cart"> </a>
+                </div>
                 <p><?php if (isset($_SESSION['user'])) {
                     echo "Welcome, " . $_SESSION['user'];
                 }
                  ?></p>
+                
                 <div class="buttons">
                     <?php if (isset($_SESSION['user'])): ?>
                     <a href="validate/logout-validate.php" class="signup">Logout</a>
