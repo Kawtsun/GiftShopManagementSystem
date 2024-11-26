@@ -54,7 +54,21 @@ session_start();
     </header>
 <body>
     <main>
-        <div class="intro3">
+        <div class="intro4">
+            <h2>About this Gift Shop</h2>
+            <p>
+                Welcome to <b>Likhang Kultura!</b> 🌟 <br><br>
+
+                Located in the heart of our community, <b>Likhang Kultura</b> is more than just a gift store—it's a celebration of Filipino craftsmanship and culture. Our shop proudly showcases a curated selection of handcrafted products, each piece telling its own unique story of artistry and heritage. <br><br>
+
+                <b>Sa Likhang Kultura, bawat produkto ay may kwento.</b> We take pride in offering a diverse range of items, from traditional woven textiles and intricate woodwork to contemporary jewelry and modern home decor. Each creation is a testament to the rich cultural heritage of the Philippines, lovingly crafted by talented local artisans. <br><br>
+
+                Whether you're looking for the perfect gift, a unique piece to add to your home, or a special reminder of our beautiful culture, you'll find it here. We believe in the beauty of handmade products, the importance of supporting local artisans, and the joy of sharing our cultural heritage with the world. <br><br>
+
+                <b>Halina't tuklasin ang ganda ng likhang Pilipino sa Likhang Kultura!</b> Your journey through our store is not just a shopping experience but a cultural exploration. Every item you purchase helps support our artisans and preserve our rich traditions for future generations. <br><br>
+
+                Thank you for visiting <b>Likhang Kultura.</b> We hope you leave with a piece of the Philippines in your heart and home. <br><br>
+            </p>
             <h2>About this Project</h2>
             <p>
                 This project was created for our <b>Advance Web Development (CS 6)</b> subject, for which we were tasked with creating a <i><b>Gift Shop Management System</b></i> that allows customers to browse products, make purchases/orders, and access customer information.

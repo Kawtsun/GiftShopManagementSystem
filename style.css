@@ -780,3 +780,25 @@ footer {
 .withbg_register::before {
     background-image: url(images/bgregister.png);
 }
+
+
+.intro4 {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    border-radius: 15px;
+    padding: 30px;
+    background-color: white;
+    margin: 30px 0;
+    text-align: left;
+    width: 1200px;
+    max-width: 100%;
+    margin: 30px auto;
+    margin-bottom: 20px;
+}
+
+.intro4 h2, p {
+    margin: 15px 0;
+}
+
+.intro4 p {
+    line-height: 25px;
+}
