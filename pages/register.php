@@ -30,7 +30,7 @@ session_start();
             </div>
         </div>
     </header>
-    <main>
+    <main class="withbg_register">
         <div class="form_container">
             <div class="intro_register">
                 <h1>Sign up now</h1>

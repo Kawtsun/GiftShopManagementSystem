@@ -24,7 +24,7 @@
             </div>
         </div>
     </header>
-    <main>
+    <main class="withbg_login">
         <div class="form_container">
             <div class="intro_login">
                 <h1>Log in now</h1>
