@@ -61,7 +61,7 @@ session_start();
 
                 Located in the heart of our community, <b>Likhang Kultura</b> is more than just a gift store—it's a celebration of Filipino craftsmanship and culture. Our shop proudly showcases a curated selection of handcrafted products, each piece telling its own unique story of artistry and heritage. <br><br>
 
-                <b>Sa Likhang Kultura, bawat produkto ay may kwento.</b> We take pride in offering a diverse range of items, from traditional woven textiles and intricate woodwork to contemporary jewelry and modern home decor. Each creation is a testament to the rich cultural heritage of the Philippines, lovingly crafted by talented local artisans. <br><br>
+                <b>Sa Likhang Kultura, bawat produkto ay may kwento.</b> We take pride in offering a diverse range of items. Each creation is a testament to the rich cultural heritage of the Philippines, lovingly crafted by talented local artisans. <br><br>
 
                 Whether you're looking for the perfect gift, a unique piece to add to your home, or a special reminder of our beautiful culture, you'll find it here. We believe in the beauty of handmade products, the importance of supporting local artisans, and the joy of sharing our cultural heritage with the world. <br><br>
 
