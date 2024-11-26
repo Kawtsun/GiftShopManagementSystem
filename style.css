@@ -20,9 +20,10 @@ body {
     min-height: 100vh;
 }
 
-main { flex: 1;
-
+main { 
+    flex: 1;
 }
+
 h1, h2, h3, h4, b, strong {
     color: black;
 }
