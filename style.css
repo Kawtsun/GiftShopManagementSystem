@@ -584,3 +584,14 @@ header p {
 .cart_table2 .subtotal {
     font-weight: bold;
 }
+
+
+.profile_container{
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.profile_container .alert.error {
+    margin: 0 auto;
+    text-align: center;
+}

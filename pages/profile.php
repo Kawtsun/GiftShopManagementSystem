@@ -40,51 +40,64 @@ if ($profile === null) {
 }
 
 // Update profile information
+$errors = [];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = $_POST['fullname'];
     $shipping_address = $_POST['shipping_address'];
     $email = $_POST['email'];
     $password = $_POST['password'] ?? '';
+    $confirm_password = $_POST['confirm_password'] ?? '';
 
-    // Update profile table
-    $sql = "SELECT * FROM profile WHERE user_id = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $user_id);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-
-    if (mysqli_num_rows($result) > 0) {
-        $sql = "UPDATE profile SET fullname = ?, shipping_address = ?, email = ? WHERE user_id = ?";
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "sssi", $fullname, $shipping_address, $email, $user_id);
-    } else {
-        $sql = "INSERT INTO profile (user_id, fullname, shipping_address, email) VALUES (?, ?, ?, ?)";
-        $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "isss", $user_id, $fullname, $shipping_address, $email);
-    }
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
-    // Update users table
-    $sql = "UPDATE users SET fullname = ?, email = ? WHERE id = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ssi", $fullname, $email, $user_id);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
-
-    // Update password if provided
+    // Validate password
     if (!empty($password)) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "UPDATE users SET password = ? WHERE id = ?";
+        if (strlen($password) < 8) {
+            $errors[] = "Password must be at least 8 characters long.";
+        } elseif ($password !== $confirm_password) {
+            $errors[] = "Passwords do not match.";
+        }
+    }
+
+    if (empty($errors)) {
+        // Update profile table
+        $sql = "SELECT * FROM profile WHERE user_id = ?";
         $stmt = mysqli_prepare($conn, $sql);
-        mysqli_stmt_bind_param($stmt, "si", $hashed_password, $user_id);
+        mysqli_stmt_bind_param($stmt, "i", $user_id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+
+        if (mysqli_num_rows($result) > 0) {
+            $sql = "UPDATE profile SET fullname = ?, shipping_address = ?, email = ? WHERE user_id = ?";
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "sssi", $fullname, $shipping_address, $email, $user_id);
+        } else {
+            $sql = "INSERT INTO profile (user_id, fullname, shipping_address, email) VALUES (?, ?, ?, ?)";
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "isss", $user_id, $fullname, $shipping_address, $email);
+        }
         mysqli_stmt_execute($stmt);
         mysqli_stmt_close($stmt);
-    }
 
-    $_SESSION['success_message'] = "Profile updated successfully!";
-    header("Location: profile.php");
-    exit();
+        // Update users table
+        $sql = "UPDATE users SET fullname = ?, email = ? WHERE id = ?";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, "ssi", $fullname, $email, $user_id);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+
+        // Update password if provided
+        if (!empty($password)) {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "UPDATE users SET password = ? WHERE id = ?";
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "si", $hashed_password, $user_id);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+        }
+
+        $_SESSION['success_message'] = "Profile updated successfully!";
+        header("Location: profile.php");
+        exit();
+    }
 }
 
 ?>
@@ -141,27 +154,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($_SESSION['success_message'])) { 
                     echo "<div id='success-message' class='alert success'>{$_SESSION['success_message']}</div>"; 
                     unset($_SESSION['success_message']); 
-                } 
+                }
             ?>
-            <form action="profile.php" method="POST">
-                <div class="form-group">
-                    <label for="fullname">Name:</label>
-                    <input type="text" id="fullname" name="fullname" value="<?php echo htmlspecialchars($profile['fullname']); ?>" required>
-                </div>
-                <div class="form-group">
-                    <label for="shipping_address">Shipping Address:</label>
-                    <textarea id="shipping_address" name="shipping_address" required><?php echo htmlspecialchars($profile['shipping_address']); ?></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($profile['email']); ?>" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password (leave blank to keep current password):</label>
-                    <input type="password" id="password" name="password">
-                </div>
-                <button type="submit">Update Profile</button>
-            </form>
+            <div class="billing_container">
+                <?php
+                if (!empty($errors)) {
+                    echo "<div class='alert error'>";
+                    foreach ($errors as $error) {
+                        echo "<p>$error</p>";
+                    }
+                    echo "</div>";
+                }
+                ?>
+                <form action="profile.php" method="POST">
+                    <div class="form-group">
+                        <label for="fullname">Name:</label>
+                        <input type="text" id="fullname" name="fullname" value="<?php echo htmlspecialchars($profile['fullname']); ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($profile['email']); ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="shipping_address">Shipping Address:</label>
+                        <textarea id="shipping_address" name="shipping_address" required><?php echo htmlspecialchars($profile['shipping_address']); ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password (leave blank to keep current password):</label>
+                        <input type="password" id="password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password:</label>
+                        <input type="password" id="confirm_password" name="confirm_password">
+                    </div>
+                    <button type="submit">Update Profile</button>
+                </form>
+            </div>
+            
         </div>
     </main>
     <footer>
