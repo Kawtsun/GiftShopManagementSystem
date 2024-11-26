@@ -9,7 +9,6 @@ if (isset($_POST['update_cart'])) {
         $main_product_id = $_POST['main_product_id'];
         $quantity = $_POST['quantity'];
 
-        // Update the quantity for the product in the cart
         $sql = "UPDATE cart SET quantity = ? WHERE user_id = ? AND main_product_id = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "iii", $quantity, $user_id, $main_product_id);
@@ -29,7 +28,6 @@ if (isset($_POST['update_cart'])) {
         $user_id = $_SESSION['user_id'];
         $main_product_id = $_POST['main_product_id'];
 
-        // Remove the item from the cart
         $sql = "DELETE FROM cart WHERE user_id = ? AND main_product_id = ?";
         $stmt = mysqli_prepare($conn, $sql);
         mysqli_stmt_bind_param($stmt, "ii", $user_id, $main_product_id);
