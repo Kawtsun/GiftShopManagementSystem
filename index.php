@@ -3,9 +3,8 @@ session_start();
 
 include 'validate/db.php';
 
-
-$sql = "SELECT * FROM products";
-$all_products = $conn->query($sql);
+$sql = "SELECT * FROM products WHERE is_featured = 1";
+$featured_products = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -14,8 +13,6 @@ $all_products = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Likhang Kultura - Welcome to our gift store!</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Knewave&family=Rubik+Glitch&family=Shrikhand&family=Sriracha&display=swap" rel="stylesheet">
@@ -59,8 +56,6 @@ $all_products = $conn->query($sql);
         </div>
     </header>
 
-
-
     <main>
         <div class="intro">
             <h1>Featured Products</h1>
@@ -71,7 +66,7 @@ $all_products = $conn->query($sql);
         ?>
         <div class="product_container">
             <?php
-            while ($row = mysqli_fetch_assoc($all_products)) {
+            while ($row = mysqli_fetch_assoc($featured_products)) {
                 echo '
                 <div class="card">
                     <div class="image">
