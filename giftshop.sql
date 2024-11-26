@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Nov 25, 2024 at 02:18 PM
+-- Generation Time: Nov 26, 2024 at 03:39 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,6 +33,14 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL,
   `main_product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `quantity`, `main_product_id`) VALUES
+(132, 4, 1, 3),
+(133, 4, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -140,7 +148,32 @@ INSERT INTO `orders` (`order_id`, `user_id`, `name`, `email`, `address`, `paymen
 (46, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'cxxcxc', 'Cash on Delivery (COD)', '2024-11-25 13:05:33'),
 (47, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'sddd', 'Cash on Delivery (COD)', '2024-11-25 13:06:26'),
 (48, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'dadad', 'Cash on Delivery (COD)', '2024-11-25 13:07:30'),
-(49, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'dsdd', 'Cash on Delivery (COD)', '2024-11-25 13:09:16');
+(49, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'dsdd', 'Cash on Delivery (COD)', '2024-11-25 13:09:16'),
+(50, 4, 'Tomori Kusunoki', 'tomoriru@gmail.com', 'dsdda', 'Cash on Delivery (COD)', '2024-11-25 14:05:31'),
+(51, 4, 'Tomori Kusunoki', 'tomoriru@gmail.com', 'dadas', 'Cash on Delivery (COD)', '2024-11-25 14:06:46'),
+(52, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'dsdadadasd', 'Cash on Delivery (COD)', '2024-11-25 14:20:17'),
+(53, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'dfzsfsdfddf', 'Cash on Delivery (COD)', '2024-11-25 14:20:53'),
+(54, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 02:36:50'),
+(55, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'ssd', 'Cash on Delivery (COD)', '2024-11-26 02:37:07'),
+(56, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'sddsdd', 'Cash on Delivery (COD)', '2024-11-26 02:40:11'),
+(57, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'weewe', 'Cash on Delivery (COD)', '2024-11-26 03:00:34'),
+(58, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:07:19'),
+(59, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:09:42'),
+(60, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:12:22'),
+(61, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:13:04'),
+(62, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:13:25'),
+(63, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:16:43'),
+(64, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:19:02'),
+(65, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:20:22'),
+(66, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:21:24'),
+(67, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:22:20'),
+(68, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:22:39'),
+(69, 1, 'Morpheus Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:24:35'),
+(70, 1, 'Morpheus Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 04:45:20'),
+(71, 1, 'Morpheus Francisco', 'kawtsun@gmail.com', 'Rizal', 'Cash on Delivery (COD)', '2024-11-26 07:44:53'),
+(72, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Morong, Rizal', 'Cash on Delivery (COD)', '2024-11-26 08:33:11'),
+(73, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Morong, Rizal', 'Cash on Delivery (COD)', '2024-11-26 09:32:06'),
+(74, 1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Morong, Rizal', 'Cash on Delivery (COD)', '2024-11-26 14:13:11');
 
 -- --------------------------------------------------------
 
@@ -236,7 +269,47 @@ INSERT INTO `order_items` (`order_item_id`, `order_id`, `main_product_id`, `quan
 (74, 47, 2, 1),
 (75, 48, 2, 1),
 (76, 49, 2, 1),
-(77, 49, 3, 1);
+(77, 49, 3, 1),
+(78, 50, 3, 1),
+(79, 51, 3, 1),
+(80, 51, 2, 1),
+(81, 52, 21, 1),
+(82, 53, 2, 1),
+(83, 54, 3, 1),
+(84, 54, 2, 1),
+(85, 55, 3, 1),
+(86, 56, 2, 1),
+(87, 56, 3, 1),
+(88, 57, 2, 1),
+(89, 57, 3, 1),
+(90, 58, 2, 1),
+(91, 58, 3, 1),
+(92, 59, 2, 1),
+(93, 59, 3, 1),
+(94, 60, 2, 1),
+(95, 60, 3, 1),
+(96, 61, 2, 2),
+(97, 61, 3, 1),
+(98, 62, 2, 1),
+(99, 62, 3, 1),
+(100, 63, 2, 1),
+(101, 63, 3, 1),
+(102, 64, 2, 1),
+(103, 64, 3, 1),
+(104, 65, 2, 1),
+(105, 65, 3, 1),
+(106, 66, 2, 1),
+(107, 67, 2, 1),
+(108, 67, 3, 1),
+(109, 68, 2, 1),
+(110, 68, 3, 1),
+(111, 69, 2, 1),
+(112, 70, 2, 1),
+(113, 71, 2, 2),
+(114, 72, 3, 1),
+(115, 73, 2, 1),
+(116, 74, 3, 1),
+(117, 74, 17, 1);
 
 -- --------------------------------------------------------
 
@@ -249,20 +322,57 @@ CREATE TABLE `products` (
   `product_name` varchar(255) NOT NULL,
   `product_price` decimal(10,2) NOT NULL,
   `product_image` varchar(255) NOT NULL,
-  `main_product_id` int(11) NOT NULL
+  `main_product_id` int(11) NOT NULL,
+  `is_featured` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`product_code`, `product_name`, `product_price`, `product_image`, `main_product_id`) VALUES
-('K001', 'Sambalilong Itim', 250.00, 'images/SambaliloItim.png', 1),
-('K002', 'Sambalilong Kayumanggi', 250.00, 'images/SambaliloKayumanggi.png', 2),
-('K003', 'Tasang Kayumanggi', 400.00, 'images/TasangKayumanggi.png', 3),
-('K004', 'Tasang Kalesa', 420.00, 'images/TasangKalesa.png', 4),
-('K006', 'Halapot Kahel', 150.00, 'images/HalapotKahel.png', 6),
-('K007', 'Halapot Asul', 150.00, 'images/HalapotAsul.png', 7);
+INSERT INTO `products` (`product_code`, `product_name`, `product_price`, `product_image`, `main_product_id`, `is_featured`) VALUES
+('K001', 'Sambalilong Itim', 250.00, 'images/SambaliloItim.png', 1, 0),
+('K002', 'Sambalilong Kayumanggi', 250.00, 'images/SambaliloKayumanggi.png', 2, 0),
+('K003', 'Tasang Kayumanggi', 400.00, 'images/TasangKayumanggi.png', 3, 1),
+('K004', 'Tasang Kalesa', 420.00, 'images/TasangKalesa.png', 4, 0),
+('K005', 'Tasang Dyip', 400.00, 'images/TasangDyip.png', 5, 0),
+('K006', 'Halapot Kahel', 150.00, 'images/HalapotKahel.png', 6, 0),
+('K007', 'Halapot Asul', 150.00, 'images/HalapotAsul.png', 7, 1),
+('K008', 'Panabit na Watawat', 100.00, 'images/Panabit.png', 8, 0),
+('K009', 'Kamisetang Itim', 350.00, 'images/KamisetaItim.png', 9, 0),
+('K010', 'Kamisetang Abo', 350.00, 'images/KamisetaAbo.png', 10, 0),
+('K011', 'Dyaket', 1000.00, 'images/Dyaket.png', 11, 0),
+('K012', 'Tasang Panglakbay', 400.00, 'images/TasaPaglakbay.png', 12, 0),
+('K013', 'Tasang Pangsiyasat', 400.00, 'images/TasaSiyasat.png', 13, 0),
+('K014', 'Dyaket na Pilipinas', 1000.00, 'images/DyaketNaPilipinas.png', 14, 1),
+('K015', 'Barkong Inukit sa Kahoy', 750.00, 'images/InukitNaBarko.png', 15, 0),
+('K016', 'Rosaryo', 150.00, 'images/Rosaryo.png', 16, 1),
+('K017', 'Sambalilong Pambabae', 400.00, 'images/SambalilongPambabae.png', 17, 1),
+('K018', 'Pilipinas Polo', 600.00, 'images/PilipinasPolo.png', 18, 0),
+('K019', 'Pilipinas Polo v2', 650.00, 'images/PilipinasPoloV2.png', 19, 1),
+('K020', 'Bayong', 250.00, 'images/Bayong.png', 20, 0),
+('K021', 'Tsarera', 350.00, 'images/Tsarera.png', 21, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profile`
+--
+
+CREATE TABLE `profile` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `shipping_address` text NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `profile`
+--
+
+INSERT INTO `profile` (`id`, `user_id`, `fullname`, `shipping_address`, `email`) VALUES
+(1, 1, 'Morpheus Joshua Francisco', 'Morong, Rizal', 'kawtsun@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -283,7 +393,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullname`, `email`, `username`, `password`) VALUES
-(1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Kawtsun', '$2y$10$L8EEVeJ9jBjR0T5xYReIHuu7tTIRi5ndr6GZb8dTBrdkeVXtDg2AS'),
+(1, 'Morpheus Joshua Francisco', 'kawtsun@gmail.com', 'Kawtsun', '$2y$10$L0otNUCGWQ4wwYnXMwwL.eJzyPyDPNm9oRbmuLrieL3cebYdmU6aa'),
 (4, 'Tomori Kusunoki', 'tomoriru@gmail.com', 'Tomoriru', '$2y$10$etiATqM/PCYH8gqcdhSPnOf2sPnKKl/KPRoSsCLycXCXlNmPgoeQK'),
 (5, 'Setsuna Yuki', 'setsu@gmail.com', 'Setsu', '$2y$10$aq1TW7j10v5dA9M/FJi8Aemt563HDxZNPyz6qgfWxiPI6DT4B7eJa');
 
@@ -329,6 +439,13 @@ ALTER TABLE `products`
   ADD KEY `main_product_id` (`main_product_id`);
 
 --
+-- Indexes for table `profile`
+--
+ALTER TABLE `profile`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -344,7 +461,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
 
 --
 -- AUTO_INCREMENT for table `main_products`
@@ -356,13 +473,19 @@ ALTER TABLE `main_products`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+
+--
+-- AUTO_INCREMENT for table `profile`
+--
+ALTER TABLE `profile`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -401,6 +524,12 @@ ALTER TABLE `order_items`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`main_product_id`) REFERENCES `main_products` (`product_id`);
+
+--
+-- Constraints for table `profile`
+--
+ALTER TABLE `profile`
+  ADD CONSTRAINT `profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
