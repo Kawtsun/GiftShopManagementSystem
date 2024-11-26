@@ -27,7 +27,7 @@ $all_products = $conn->query($sql);
                 <nav class="navlinks">
                     <ul>
                         <li><a href="../index.php">Home</a></li>
-                        <li><a href="catalog.php">Catalog</a></li>
+                        <li><a href="catalog.php" class="active">Catalog</a></li>
                         <li><a href="about.php">About</a></li>
                     </ul>
                 </nav>

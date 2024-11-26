@@ -54,7 +54,32 @@ h1, h2, h3, h4, b, strong {
 .navlinks a {
     color: white;
     text-decoration: none;
+    position: relative; 
 }
+
+.navlinks a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: -8px;
+    left: 0;
+    background-color: #ffedd0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.navlinks a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.navlinks a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
 
 .profile_cart {
     display: flex;
@@ -117,7 +142,7 @@ h1, h2, h3, h4, b, strong {
     letter-spacing: 5px;
     text-transform: uppercase;
     color: white;
-    font-family: "Knewave", system-ui;
+    font-family: "Knewave", system-ui; /*"Sriracha", cursive;*/
     font-size: 50px;
     margin-bottom: 50px;
 }
@@ -183,8 +208,7 @@ h1, h2, h3, h4, b, strong {
 }
 header p {
     text-decoration:underline #ffedd0 4px;
-    text-underline-offset: 8px;
-    margin-left: 20px;
+    text-underline-offset: 8px;  
 }
 
 
@@ -510,6 +534,7 @@ header p {
     display: block;
     margin: 30px auto 0;
     color: white;
+    font-size: 20px;
     background-color: #3b3030;
     border: 1px solid transparent;
     border-radius: 8px;
@@ -611,24 +636,24 @@ header p {
 }
 
 .profile_cart .profile, .cart {
-    filter: invert(1);
-    transition: filter 0.3s ease;
+    filter: invert(0.8) sepia(1) saturate(0) hue-rotate(180deg);
+    transition: filter 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .profile_cart .profile.active {
-    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(210deg);
+    filter: invert(0.6) sepia(1) saturate(3) hue-rotate(170deg); /* Adjusted color to blend well */
 }
 
 .profile_cart .cart.active {
-    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(90deg);
+    filter: invert(0.6) sepia(1) saturate(3) hue-rotate(60deg); /* Adjusted color to blend well */
 }
 
 .profile_cart .profile:hover {
-    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(210deg);
+    filter: invert(0.6) sepia(1) saturate(3) hue-rotate(170deg); /* Adjusted color to blend well */
 }
 
 .profile_cart .cart:hover {
-    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(90deg);
+    filter: invert(0.6) sepia(1) saturate(3) hue-rotate(60deg); /* Adjusted color to blend well */
 }
 
 .profile_cart a {
