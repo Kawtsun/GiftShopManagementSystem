@@ -57,7 +57,7 @@ session_start();
         <div class="intro3">
             <h2>About this Project</h2>
             <p>
-                This project is from our <b> Advance Web Development (CS6) </b> subject which we are tasked to create a <b><i>Gift Shop Management System</i></b> that allows customers to browse products, make purchases/orders, and customer information.
+                This project was created for our <b>Advance Web Development (CS 6)</b> subject, for which we were tasked with creating a <i><b>Gift Shop Management System</b></i> that allows customers to browse products, make purchases/orders, and access customer information.
             </p>
             <div class="programmers">
                 <h3>Programmers</h3>
@@ -77,7 +77,6 @@ session_start();
                         <img src="../images/github.svg" alt="" width="40px">
                     </a>
                 </div>
-                
             </div>
         </div>
     </main>

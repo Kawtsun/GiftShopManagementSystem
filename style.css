@@ -712,6 +712,16 @@ header p {
     text-align: right;
 }
 
+.projectsource a img {
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.projectsource a img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2) contrast(1.2);
+}
+
+
 .prog {
     margin: 15px 0;
 }
